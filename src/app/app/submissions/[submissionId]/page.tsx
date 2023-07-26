@@ -54,7 +54,7 @@ const SubmissionDetails = async ({
               </div>
             </div>
           </div>
-          <SubmissionRating />
+          <SubmissionRating submissionId={params.submissionId} />
         </div>
       </div>
     </Page>

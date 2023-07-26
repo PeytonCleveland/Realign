@@ -1,13 +1,41 @@
 "use client";
 
 import { useState } from "react";
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import { useRouter } from "next/navigation";
 import { Rating, ThinStar } from "@smastrom/react-rating";
+import toast from "react-hot-toast";
 
-const SubmissionRating = () => {
+const SubmissionRating = ({ submissionId }: any) => {
   const [rating, setRating] = useState<number | null>(null);
   const [factual, setFactual] = useState<string | null>(null);
   const [helpful, setHelpful] = useState<string | null>(null);
   const [safe, setSafe] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  const router = useRouter();
+
+  const supabase = createClientComponentClient();
+
+  const notify = () => toast.success("Data sumbitted succesfully");
+
+  const handleSubmit = async () => {
+    setIsLoading(true);
+
+    const { error } = await supabase.from("ratings").insert({
+      submission_id: submissionId,
+      overall_rating: rating,
+      truthful: factual,
+      helpful: helpful,
+      safe: safe,
+    });
+
+    if (error) console.log(error);
+
+    setIsLoading(false);
+    notify();
+    router.push("/app/submissions");
+  };
 
   const ratingSwitch = (rating: number) => {
     switch (rating) {
@@ -251,7 +279,10 @@ const SubmissionRating = () => {
       </div>
 
       <button
-        disabled={rating === null || factual === null}
+        disabled={
+          isLoading || rating === null || factual === null || safe === null
+        }
+        onClick={handleSubmit}
         className="bg-blue-600 text-white disabled:bg-blue-300 px-5 py-3 font-medium rounded-md gap-2 hover:bg-blue-500 focus:bg-blue-600 focus:ring-1 ring-blue-500 ring-offset-2 flex justify-center items-center"
       >
         Submit
