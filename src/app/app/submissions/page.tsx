@@ -1,6 +1,8 @@
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
-import { Page, SubmissionTabs } from "@/components";
+import { Page, SubmissionTabs, Breadcrumbs } from "@/components";
+
+export const revalidate = 0;
 
 const Submissions = async () => {
   const supabase = createServerComponentClient({
@@ -38,6 +40,13 @@ const Submissions = async () => {
     <Page>
       <div className="w-full bg-gray-50">
         <div className="mb-6 mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8 w-full">
+          <Breadcrumbs
+            items={[
+              { text: "Home", href: "/app" },
+              { text: "Submissions", href: "/app/submissions", active: true },
+            ]}
+            className="mb-12"
+          />
           <h1 className="text-2xl font-bold text-gray-900 sm:text-3xl">
             Score RLHF Submissions
           </h1>

@@ -111,9 +111,12 @@ const SubmissionTable: FC<Props> = ({ submissions }) => {
                 </p>
               </div>
               <div className="w-[15%] flex flex-wrap gap-1">
-                {submission.tags.map((tag) => {
+                {submission.tags.map((tag, index) => {
                   return (
-                    <div className="py-1.5 px-3 text-xs bg-blue-600 text-white w-fit h-fit rounded-full">
+                    <div
+                      key={index}
+                      className="py-1.5 px-3 text-xs bg-blue-600 text-white w-fit h-fit rounded-full"
+                    >
                       {tag}
                     </div>
                   );

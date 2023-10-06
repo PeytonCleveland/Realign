@@ -31,45 +31,37 @@ const ProfileDropdown: FC<Props> = ({ avatarUrl }) => {
         <img
           alt="Man"
           src={avatarUrl ?? "/default.png"}
-          className="h-10 w-10 rounded-full object-cover shadow-sm"
+          className="h-10 w-10 rounded-full object-cover shadow-sm transform transition duration-200 hover:scale-105 hover:shadow-xl"
         />
       </button>
 
       {isOpen ? (
         <div
-          className="absolute right-0 z-10 mt-3 w-56 origin-top-right rounded-md bg-white shadow-sm ring-1 ring-black ring-opacity-5 focus:outline-none"
+          className="absolute right-0 z-10 mt-3 w-40 origin-top-right rounded-md bg-white shadow-sm ring-1 ring-black ring-opacity-5 focus:outline-none"
           role="menu"
           aria-orientation="vertical"
           aria-labelledby="menu-button"
           ref={wrapperRef}
         >
-          <div className="py-1" role="none">
+          <div role="none">
             <a
               href="#"
-              className="text-gray-700 block px-4 py-2 text-sm"
+              className="text-gray-700 block px-4 py-2 text-sm hover:bg-blue-50"
               role="menuitem"
               id="menu-item-0"
             >
-              Account settings
+              Account
             </a>
             <a
               href="#"
-              className="text-gray-700 block px-4 py-2 text-sm"
+              className="text-gray-700 block px-4 py-2 text-sm hover:bg-blue-50"
               role="menuitem"
               id="menu-item-1"
             >
               Support
             </a>
-            <a
-              href="#"
-              className="text-gray-700 block px-4 py-2 text-sm"
-              role="menuitem"
-              id="menu-item-2"
-            >
-              License
-            </a>
             <button
-              className="text-gray-700 block w-full px-4 py-2 text-left text-sm"
+              className="text-gray-700 px-4 py-2 text-sm hover:bg-blue-50 flex w-full"
               role="menuitem"
               id="menu-item-3"
               onClick={() => handleSignOut()}

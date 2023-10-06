@@ -10,7 +10,7 @@ const Footer = () => {
           </div>
 
           <p className="mt-4 text-center text-sm text-gray-500 lg:mt-0 lg:text-right">
-            Copyright &copy; Peyton Cleveland 2023. All rights reserved.
+            Copyright &copy; Omni Federal 2023. All rights reserved.
           </p>
         </div>
       </div>

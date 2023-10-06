@@ -1,40 +1,83 @@
 "use client";
 
-import { useState } from "react";
+import { useState, FC } from "react";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
-import { useRouter } from "next/navigation";
 import { Rating, ThinStar } from "@smastrom/react-rating";
 import toast from "react-hot-toast";
 
-const SubmissionRating = ({ submissionId }: any) => {
-  const [rating, setRating] = useState<number | null>(null);
-  const [factual, setFactual] = useState<string | null>(null);
-  const [helpful, setHelpful] = useState<string | null>(null);
-  const [safe, setSafe] = useState<string | null>(null);
+enum Choice {
+  YES = "yes",
+  NO = "no",
+  UNSURE = "unsure",
+}
+
+interface Rating {
+  submission_id: string;
+  overall_rating: number;
+  truthful: Choice;
+  helpful: Choice;
+  safe: Choice;
+  user_id: string;
+}
+
+interface Props {
+  userId: string;
+  submissionId: string;
+  previousRating: any;
+}
+
+const SubmissionRating: FC<Props> = ({
+  userId,
+  submissionId,
+  previousRating,
+}) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const router = useRouter();
+  const [rating, setRating] = useState<Rating>(
+    previousRating || {
+      submission_id: submissionId,
+      overall_rating: null,
+      truthful: null,
+      helpful: null,
+      safe: null,
+      user_id: userId,
+    }
+  );
 
   const supabase = createClientComponentClient();
 
-  const notify = () => toast.success("Data sumbitted succesfully");
+  const notifySuccess = () => toast.success("Data sumbitted succesfully");
+  const notifyFailure = (error: string) => toast.error(error);
 
   const handleSubmit = async () => {
     setIsLoading(true);
 
-    const { error } = await supabase.from("ratings").insert({
-      submission_id: submissionId,
-      overall_rating: rating,
-      truthful: factual,
-      helpful: helpful,
-      safe: safe,
-    });
+    if (previousRating) {
+      const { error } = await supabase
+        .from("ratings")
+        .update({
+          overall_rating: rating.overall_rating,
+          truthful: rating.truthful,
+          helpful: rating.helpful,
+          safe: rating.safe,
+        })
+        .eq("id", previousRating.id);
 
-    if (error) console.log(error);
+      if (error) {
+        notifyFailure(error.message);
+        return;
+      }
+    } else {
+      const { error } = await supabase.from("ratings").insert(rating);
+
+      if (error) {
+        notifyFailure(error.message);
+        return;
+      }
+    }
 
     setIsLoading(false);
-    notify();
-    router.push("/app/submissions");
+    notifySuccess();
   };
 
   const ratingSwitch = (rating: number) => {
@@ -54,6 +97,17 @@ const SubmissionRating = ({ submissionId }: any) => {
     }
   };
 
+  const isRatingEqual = (): boolean => {
+    if (!previousRating) return false;
+
+    return (
+      previousRating.overall_rating === rating.overall_rating &&
+      previousRating.truthful === rating.truthful &&
+      previousRating.helpful === rating.helpful &&
+      previousRating.safe === rating.safe
+    );
+  };
+
   return (
     <div className="flex flex-1 flex-col gap-10 border-2 border-blue-600 rounded-md shadow-sm p-5">
       <div className="flex flex-col gap-1">
@@ -63,8 +117,10 @@ const SubmissionRating = ({ submissionId }: any) => {
         </p>
         <div className="flex gap-3">
           <Rating
-            value={rating || 0}
-            onChange={(v: number) => setRating(v)}
+            value={rating.overall_rating || 0}
+            onChange={(v: number) =>
+              setRating({ ...rating, overall_rating: v })
+            }
             style={{ maxWidth: "160px" }}
             itemStyles={{
               itemShapes: ThinStar,
@@ -83,8 +139,8 @@ const SubmissionRating = ({ submissionId }: any) => {
             halfFillMode="box"
           />
           {rating ? (
-            <p className="text-gray-600 font-light text-sm">
-              {ratingSwitch(rating)}
+            <p className="text-gray-600 font-light text-sm pt-0.5">
+              {ratingSwitch(rating.overall_rating)}
             </p>
           ) : null}
         </div>
@@ -102,8 +158,8 @@ const SubmissionRating = ({ submissionId }: any) => {
               value="yes"
               id="factualYes"
               className="peer hidden"
-              checked={factual === "yes"}
-              onClick={() => setFactual("yes")}
+              checked={rating.truthful === Choice.YES}
+              onChange={() => setRating({ ...rating, truthful: Choice.YES })}
             />
 
             <label
@@ -120,8 +176,8 @@ const SubmissionRating = ({ submissionId }: any) => {
               value="no"
               id="factualNo"
               className="peer hidden"
-              checked={factual === "no"}
-              onClick={() => setFactual("no")}
+              checked={rating.truthful === Choice.NO}
+              onChange={() => setRating({ ...rating, truthful: Choice.NO })}
             />
 
             <label
@@ -138,8 +194,8 @@ const SubmissionRating = ({ submissionId }: any) => {
               value="unsure"
               id="factualUnsure"
               className="peer hidden"
-              checked={factual === "unsure"}
-              onClick={() => setFactual("unsure")}
+              checked={rating.truthful === Choice.UNSURE}
+              onChange={() => setRating({ ...rating, truthful: Choice.UNSURE })}
             />
 
             <label
@@ -165,8 +221,8 @@ const SubmissionRating = ({ submissionId }: any) => {
               value="yes"
               id="helpfulYes"
               className="peer hidden"
-              checked={helpful === "yes"}
-              onClick={() => setHelpful("yes")}
+              checked={rating.helpful === Choice.YES}
+              onChange={() => setRating({ ...rating, helpful: Choice.YES })}
             />
 
             <label
@@ -183,8 +239,8 @@ const SubmissionRating = ({ submissionId }: any) => {
               value="no"
               id="helpfulNo"
               className="peer hidden"
-              checked={helpful === "no"}
-              onClick={() => setHelpful("no")}
+              checked={rating.helpful === Choice.NO}
+              onChange={() => setRating({ ...rating, helpful: Choice.NO })}
             />
 
             <label
@@ -201,8 +257,8 @@ const SubmissionRating = ({ submissionId }: any) => {
               value="unsure"
               id="helpfulUnsure"
               className="peer hidden"
-              checked={helpful === "unsure"}
-              onClick={() => setHelpful("unsure")}
+              checked={rating.helpful === Choice.UNSURE}
+              onChange={() => setRating({ ...rating, helpful: Choice.UNSURE })}
             />
 
             <label
@@ -228,8 +284,8 @@ const SubmissionRating = ({ submissionId }: any) => {
               value="yes"
               id="safeYes"
               className="peer hidden"
-              checked={safe === "yes"}
-              onClick={() => setSafe("yes")}
+              checked={rating.safe === Choice.YES}
+              onChange={() => setRating({ ...rating, safe: Choice.YES })}
             />
 
             <label
@@ -246,8 +302,8 @@ const SubmissionRating = ({ submissionId }: any) => {
               value="no"
               id="safeNo"
               className="peer hidden"
-              checked={safe === "no"}
-              onClick={() => setSafe("no")}
+              checked={rating.safe === Choice.NO}
+              onChange={() => setRating({ ...rating, safe: Choice.NO })}
             />
 
             <label
@@ -264,8 +320,8 @@ const SubmissionRating = ({ submissionId }: any) => {
               value="unsure"
               id="safeUnsure"
               className="peer hidden"
-              checked={safe === "unsure"}
-              onClick={() => setSafe("unsure")}
+              checked={rating.safe === Choice.UNSURE}
+              onChange={() => setRating({ ...rating, safe: Choice.UNSURE })}
             />
 
             <label
@@ -280,7 +336,11 @@ const SubmissionRating = ({ submissionId }: any) => {
 
       <button
         disabled={
-          isLoading || rating === null || factual === null || safe === null
+          isLoading ||
+          rating.overall_rating === null ||
+          rating.truthful === null ||
+          rating.safe === null ||
+          isRatingEqual()
         }
         onClick={handleSubmit}
         className="bg-blue-600 text-white disabled:bg-blue-300 px-5 py-3 font-medium rounded-md gap-2 hover:bg-blue-500 focus:bg-blue-600 focus:ring-1 ring-blue-500 ring-offset-2 flex justify-center items-center"

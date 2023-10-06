@@ -1,6 +1,5 @@
-import Link from "next/link";
 import Image from "next/image";
-import { Achievements, Page, Tabs } from "@/components";
+import { Achievements, Card, Page, Tabs } from "@/components";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 
@@ -15,10 +14,8 @@ const AuthHome = async () => {
 
   const { data: profile } = await supabase
     .from("profiles")
-    .select("full_name")
+    .select("full_name, contributions, points")
     .eq("id", user!.id);
-
-  console.log(profile![0]);
 
   return (
     <Page>
@@ -29,9 +26,11 @@ const AuthHome = async () => {
           </h1>
 
           <p className="mt-1.5 text-sm text-gray-500">
-            You&apos;ve submitted 142 RLHF datapoints on Realign. Keep it
-            up!&nbsp;
-            <span className="text-lg">🚀</span>
+            {profile?.[0].contributions > 0
+              ? `You've submitted ${profile?.[0].contributions} datapoints on
+            Realign. Keep it up! `
+              : `Start submitting data and scoring submissions to earn points! `}
+            &nbsp;<span className="text-lg">🚀</span>
           </p>
         </div>
       </div>
@@ -39,13 +38,10 @@ const AuthHome = async () => {
         <div className="flex flex-col w-full md:w-3/5 gap-4">
           <h2 className="text-xl text-gray-900 font-semibold">Contribute</h2>
           <div className="w-full grid grid-cols-1 md:grid-cols-2 md:space-x-10 space-y-6 md:space-y-0">
-            <Link
-              className="group relative inline-block focus:outline-none focus:ring w-full h-[175px] bg-white"
+            <Card
+              title="Create RLHF Submission"
               href="/app/submissions/new"
-            >
-              <span className="absolute inset-0 border-r-2 border-b-2 rounded-md border-transparent group-hover:border-blue-400 border-dashed"></span>
-              <span className="flex border-2 justify-between rounded-md border-gray-200 h-full p-6 transition-transform group-hover:-translate-x-[6px] group-hover:-translate-y-[6px]">
-                <p className="max-w-[150px]">Create RLHF Submission</p>
+              image={
                 <Image
                   src="/folder.gif"
                   width={150}
@@ -53,16 +49,13 @@ const AuthHome = async () => {
                   alt="letter"
                   className="mr-3 mb-1"
                 />
-              </span>
-            </Link>
+              }
+            />
 
-            <Link
-              className="group relative inline-block focus:outline-none focus:ring w-full h-[175px] bg-white"
+            <Card
+              title="Score RLHF submissions"
               href="/app/submissions"
-            >
-              <span className="absolute inset-0 border-r-2 border-b-2 rounded-md border-transparent group-hover:border-blue-400 border-dashed"></span>
-              <span className="flex border-2 justify-between rounded-md border-gray-200 h-full p-6 transition-transform group-hover:-translate-x-[6px] group-hover:-translate-y-[6px]">
-                <p className="max-w-[150px]">Score RLHF submissions</p>
+              image={
                 <Image
                   src="/browse.gif"
                   width={150}
@@ -70,18 +63,16 @@ const AuthHome = async () => {
                   alt="letter"
                   className="mr-3 mb-1"
                 />
-              </span>
-            </Link>
+              }
+            />
           </div>
+
           <h2 className="text-xl text-gray-900 font-semibold mt-2">Compete</h2>
           <div className="w-full grid grid-cols-2 space-x-10">
-            <Link
-              className="group relative inline-block focus:outline-none focus:ring w-full h-[175px] bg-white"
+            <Card
+              title="Redeem reward points"
               href="/app/submissions"
-            >
-              <span className="absolute inset-0 border-r-2 border-b-2 rounded-md border-transparent group-hover:border-blue-400 border-dashed"></span>
-              <span className="flex border-2 justify-between rounded-md border-gray-200 h-full p-6 transition-transform group-hover:-translate-x-[6px] group-hover:-translate-y-[6px]">
-                <p className="max-w-[150px]">Redeem reward points</p>
+              image={
                 <Image
                   src="/rewards.gif"
                   width={150}
@@ -89,15 +80,12 @@ const AuthHome = async () => {
                   alt="letter"
                   className="mr-3 mb-1"
                 />
-              </span>
-            </Link>
-            <Link
-              className="group relative inline-block focus:outline-none focus:ring w-full h-[175px] bg-white"
+              }
+            />
+            <Card
+              title="View Realign leaderboards"
               href="/app/submissions"
-            >
-              <span className="absolute inset-0 border-r-2 border-b-2 rounded-md border-transparent group-hover:border-blue-400 border-dashed"></span>
-              <span className="flex border-2 justify-between rounded-md border-gray-200 h-full p-6 transition-transform group-hover:-translate-x-[6px] group-hover:-translate-y-[6px]">
-                <p className="max-w-[150px]">View Realign leaderboards</p>
+              image={
                 <Image
                   src="/leaderboards.gif"
                   width={160}
@@ -105,25 +93,22 @@ const AuthHome = async () => {
                   alt="letter"
                   className="mr-2"
                 />
-              </span>
-            </Link>
+              }
+            />
           </div>
           <h2 className="text-xl text-gray-900 font-semibold mt-2">Learn</h2>
           <div className="w-full grid grid-cols-2 space-x-10">
-            <Link
-              className="group relative inline-block focus:outline-none focus:ring w-full h-[175px] bg-white"
+            <Card
+              title="Language models 101"
               href="/app/submissions"
-            >
-              <span className="absolute inset-0 border-r-2 border-b-2 rounded-md border-transparent group-hover:border-blue-400 border-dashed"></span>
-              <span className="flex border-2 justify-between rounded-md border-gray-200 h-full p-6 transition-transform group-hover:-translate-x-[6px] group-hover:-translate-y-[6px]">
-                <p className="max-w-[150px]">Language models 101</p>
+              image={
                 <Image src="/learn.gif" width={150} height={150} alt="letter" />
-              </span>
-            </Link>
+              }
+            />
           </div>
         </div>
         <div className="w-[30%] h-[400px] mt-[44px] rounded-md shadow-sm hidden md:flex flex-col border-2 border-blue-600">
-          <Achievements />
+          <Achievements user={profile![0]} />
         </div>
       </div>
     </Page>
