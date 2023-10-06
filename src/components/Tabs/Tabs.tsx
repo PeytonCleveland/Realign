@@ -28,6 +28,7 @@ const Tabs: FC<Props> = ({ tabs, borderColor = "gray", onChange }) => {
         return (
           <button
             onClick={() => handleChange(index)}
+            key={index}
             className={
               index === activeIndex
                 ? "font-medium text-blue-600 border-b-4 border-blue-600 pb-2 px-6"
