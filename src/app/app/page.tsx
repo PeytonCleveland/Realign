@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Achievements, Card, Page } from "@/components";
+import { Achievements, Card, Page, Tabs } from "@/components";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 
@@ -26,8 +26,8 @@ const AuthHome = async () => {
           </h1>
 
           <p className="mt-1.5 text-sm text-gray-500">
-            {profile?.[0].contributions > -1
-              ? `You've submitted 78 datapoints on
+            {profile?.[0].contributions > 0
+              ? `You've submitted ${profile?.[0].contributions} datapoints on
             Realign. Keep it up! `
               : `Start submitting data and scoring submissions to earn points! `}
             &nbsp;<span className="text-lg">🚀</span>
