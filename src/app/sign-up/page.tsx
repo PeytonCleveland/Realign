@@ -18,9 +18,15 @@ const Signup = () => {
   const handleSignUp = async (formData: FormData) => {
     const email = String(formData.get("email"));
     const password = String(formData.get("password"));
+    const confirmPassword = String(formData.get("confirm-password"));
 
     if (!validEmailRegex.test(email)) {
       setError("You must use an Omni Federal email address.");
+      return;
+    }
+
+    if (password.trim() !== confirmPassword.trim()) {
+      setError("Your passwords must match.");
       return;
     }
 
