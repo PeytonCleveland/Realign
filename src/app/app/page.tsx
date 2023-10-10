@@ -17,8 +17,24 @@ const AuthHome = async () => {
     .select("full_name, contributions, points")
     .eq("id", user!.id);
 
+  const { data: badges } = await supabase
+    .from("user_badges")
+    .select()
+    .eq("user_id", user!.id);
+
+  const badgeNotifications = badges?.filter((badge) => {
+    badge.user_notified === false;
+  });
+
   return (
     <Page>
+      {badgeNotifications ? (
+        <div className="absolute w-screen h-screen bg-gray-900 opacity-50 left-0 top-0 flex items-center justify-center">
+          <div className="flex flex-col p-8 rounded-md shadow-sm bg-white">
+            <h2>You earned a badge!</h2>
+          </div>
+        </div>
+      ) : null}
       <div className="w-full bg-gray-50">
         <div className="mb-6 mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8 w-full">
           <h1 className="text-2xl font-bold text-gray-900 sm:text-3xl">
