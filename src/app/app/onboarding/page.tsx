@@ -53,7 +53,7 @@ const Onboarding = () => {
       .from("profiles")
       .update({
         full_name: `${userInfo.firstName.trim()} ${userInfo.lastName.trim()}`,
-        avatar_url: `https://hwhemdldlrdjiwlrnbzw.supabase.co/storage/v1/object/public/avatars/${avatarPath}`,
+        avatar_url: `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/avatars/${avatarPath}`,
         onboarded: true,
       })
       .eq("id", userId);
@@ -91,7 +91,7 @@ const Onboarding = () => {
                     width={32}
                     src={
                       avatarPath
-                        ? `https://hwhemdldlrdjiwlrnbzw.supabase.co/storage/v1/object/public/avatars/${avatarPath}`
+                        ? `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/avatars/${avatarPath}`
                         : "/default.png"
                     }
                     alt="Current profile photo"
