@@ -285,7 +285,7 @@ const NewSubmission = () => {
             submission is truthful, helpful, and complies with
             Realign&apos;s&nbsp;
             <Link
-              href="/"
+              href="/app/terms-of-service"
               className="text-blue-600 underline underline-offset-2"
             >
               Terms of Service
