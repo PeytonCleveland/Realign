@@ -105,7 +105,7 @@ const SubmissionTable: FC<Props> = ({ submissions }) => {
                   halfFillMode="box"
                 />
                 <p className="font-semibold text-sm text-gray-900">
-                  {submission.rating === -1
+                  {submission.rating === 0
                     ? "Not yet rated"
                     : `${submission.rating} / 5`}
                 </p>
