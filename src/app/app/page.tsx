@@ -17,20 +17,20 @@ const AuthHome = async () => {
     .select("full_name, contributions, points")
     .eq("id", user!.id);
 
-  const { data: badges } = await supabase
-    .from("user_badges")
-    .select()
-    .eq("user_id", user!.id);
+  // const { data: badges } = await supabase
+  //   .from("user_badges")
+  //   .select()
+  //   .eq("user_id", user!.id);
 
-  const badgeNotifications = badges?.filter((badge) => {
-    badge.user_notified === false;
-  });
+  // const badgeNotifications = badges?.filter((badge) => {
+  //   badge.user_notified === false;
+  // });
 
   return (
     <Page>
-      {badgeNotifications ? (
+      {/* {badgeNotifications ? (
         <BadgeModal badgeId={badgeNotifications[0]["badge_id"]} />
-      ) : null}
+      ) : null} */}
 
       <div className="w-full bg-gray-50">
         <div className="mb-6 mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8 w-full">
