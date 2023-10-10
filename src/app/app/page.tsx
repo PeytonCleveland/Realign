@@ -69,7 +69,7 @@ const AuthHome = async () => {
 
           <h2 className="text-xl text-gray-900 font-semibold mt-2">Compete</h2>
           <div className="w-full grid grid-cols-2 space-x-10">
-            <Card
+            {/* <Card
               title="Redeem reward points"
               href="/app/submissions"
               image={
@@ -81,10 +81,10 @@ const AuthHome = async () => {
                   className="mr-3 mb-1"
                 />
               }
-            />
+            /> */}
             <Card
               title="View Realign leaderboards"
-              href="/app/submissions"
+              href="/app/leaderboards"
               image={
                 <Image
                   src="/leaderboards.gif"

@@ -62,6 +62,15 @@ const Onboarding = () => {
       console.log(error);
     }
 
+    const { data: badge } = await supabase
+      .from("badges")
+      .select("id")
+      .eq("slug", "1-day-streak");
+
+    await supabase
+      .from("user_badges")
+      .insert({ badge_id: badge![0].id, user_id: userId });
+
     notify();
     router.push("/app");
   };
