@@ -1,4 +1,5 @@
 import { Footer, Header, Page } from "@/components";
+import Image from "next/image";
 import Link from "next/link";
 
 const Home = () => {
@@ -6,7 +7,19 @@ const Home = () => {
     <>
       <Header />
       <Page>
-        <div className="w-full bg-gray-50">
+        <div className="w-full bg-gray-50 relative">
+          <span className="absolute -right-[180px] -bottom-10 h-full w-[550px] origin-bottom-right rotate-12">
+            <Image src="/bg-texture.png" fill={true} alt="bg" />
+          </span>
+          <span className="absolute -left-[180px] -bottom-10 h-full w-[550px] origin-bottom-left -rotate-12">
+            <Image
+              src="/bg-texture.png"
+              fill={true}
+              alt="bg"
+              style={{ transform: "rotateY(180deg)" }}
+            />
+          </span>
+
           <div className="mb-6 mx-auto max-w-screen-xl px-4 py-40 sm:px-6 lg:px-8 w-full flex flex-col items-center">
             <h1 className="text-xl font-bold text-gray-900 sm:text-5xl text-center mb-4">
               Realigning{" "}
@@ -51,7 +64,44 @@ const Home = () => {
                 language model training for government use-cases
               </p>
             </div>
-            <div className="w-[60vw] h-[75vh] bg-gray-100 rounded-l-xl absolute right-0 bottom-24"></div>
+            <div className="self-start mt-20 flex flex-col gap-12 max-w-[350px]">
+              <div className="flex flex-col gap-2">
+                <h4 className="text-2xl text-white font-semibold">
+                  Submit Data
+                </h4>
+                <p className="text-sm text-gray-300 font-light">
+                  Submit prompt and response pairs on any topic. Create yours
+                  from scratch or use AI to come up with unique ideas.
+                </p>
+              </div>
+              <div className="flex flex-col gap-2">
+                <h4 className="text-2xl text-white font-semibold">
+                  Rate Submissions
+                </h4>
+                <p className="text-sm text-gray-300 font-light">
+                  Rate the submissions of other users on truthfulness,
+                  helpfulness, and safety to highlight the best submissions.
+                </p>
+              </div>
+              <div className="flex flex-col gap-2">
+                <h4 className="text-2xl text-white font-semibold">
+                  Earn Rewards
+                </h4>
+                <p className="text-sm text-gray-300 font-light">
+                  Earn points for contributing and fight for the top spot on the
+                  Realign leaderboards. Top contributors can earn up to $250 in
+                  rewards!
+                </p>
+              </div>
+            </div>
+            <div className="w-[60vw] h-[75vh] bg-gray-100 rounded-l-xl absolute right-0 bottom-24 overflow-hidden">
+              <Image
+                src="/app.png"
+                fill={true}
+                className="object-cover"
+                alt="realign"
+              />
+            </div>
           </div>
         </section>
 
