@@ -48,7 +48,7 @@ const Submissions = async () => {
             className="mb-12"
           />
           <h1 className="text-2xl font-bold text-gray-900 sm:text-3xl">
-            Score RLHF Submissions
+            Score SFT Submissions
           </h1>
 
           <p className="mt-2 text-sm text-gray-500 max-w-[600px]">

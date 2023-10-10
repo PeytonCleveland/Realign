@@ -52,7 +52,7 @@ const AuthHome = async () => {
           <h2 className="text-xl text-gray-900 font-semibold">Contribute</h2>
           <div className="w-full grid grid-cols-1 md:grid-cols-2 md:space-x-10 space-y-6 md:space-y-0">
             <Card
-              title="Create RLHF Submission"
+              title="Create SFT Submission"
               href="/app/submissions/new"
               image={
                 <Image
@@ -66,7 +66,7 @@ const AuthHome = async () => {
             />
 
             <Card
-              title="Score RLHF submissions"
+              title="Score SFT submissions"
               href="/app/submissions"
               image={
                 <Image
