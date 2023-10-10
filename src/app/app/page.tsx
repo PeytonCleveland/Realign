@@ -109,7 +109,7 @@ const AuthHome = async () => {
               }
             />
           </div>
-          <h2 className="text-xl text-gray-900 font-semibold mt-2">Learn</h2>
+          {/* <h2 className="text-xl text-gray-900 font-semibold mt-2">Learn</h2>
           <div className="w-full grid grid-cols-2 space-x-10">
             <Card
               title="Language models 101"
@@ -118,7 +118,7 @@ const AuthHome = async () => {
                 <Image src="/learn.gif" width={150} height={150} alt="letter" />
               }
             />
-          </div>
+          </div> */}
         </div>
         <div className="w-[30%] h-[400px] mt-[44px] rounded-md shadow-sm hidden md:flex flex-col border-2 border-blue-600">
           <Achievements user={profile![0]} />
