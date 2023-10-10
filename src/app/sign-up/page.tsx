@@ -89,6 +89,17 @@ const Signup = () => {
               name="password"
               className="p-3 rounded-md shadow-sm border border-gray-300 mb-5"
             />
+            <label
+              htmlFor="confirm-password"
+              className="block font-medium text-gray-700"
+            >
+              Confirm Password
+            </label>
+            <input
+              type="password"
+              name="confirm-password"
+              className="p-3 rounded-md shadow-sm border border-gray-300 mb-5"
+            />
             <button className="bg-blue-600 text-white text-lg p-3 font-medium shadow-sm rounded-md flex justify-center items-center gap-2 hover:bg-blue-500 focus:bg-blue-600 focus:ring-1 ring-blue-500 ring-offset-2">
               Create Account
             </button>
