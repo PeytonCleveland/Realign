@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Achievements, Card, Page, Tabs } from "@/components";
+import { Achievements, BadgeModal, Card, Page } from "@/components";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 
@@ -29,12 +29,9 @@ const AuthHome = async () => {
   return (
     <Page>
       {badgeNotifications ? (
-        <div className="absolute w-screen h-screen bg-gray-900 opacity-50 left-0 top-0 flex items-center justify-center">
-          <div className="flex flex-col p-8 rounded-md shadow-sm bg-white">
-            <h2>You earned a badge!</h2>
-          </div>
-        </div>
+        <BadgeModal badgeId={badgeNotifications[0]["badge_id"]} />
       ) : null}
+
       <div className="w-full bg-gray-50">
         <div className="mb-6 mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8 w-full">
           <h1 className="text-2xl font-bold text-gray-900 sm:text-3xl">

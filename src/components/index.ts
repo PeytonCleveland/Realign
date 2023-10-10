@@ -1,6 +1,7 @@
 export { default as Achievements } from "./Achievements";
 export { default as ActivityCard } from "./ActivityCard";
 export { default as Avatar } from "./Avatar";
+export { default as BadgeModal } from "./BadgeModal";
 export { default as Breadcrumbs } from "./Breadcrumbs";
 export { default as Card } from "./Card";
 export { default as Footer } from "./Footer";
