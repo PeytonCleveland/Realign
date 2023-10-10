@@ -44,7 +44,7 @@ const ProfileDropdown: FC<Props> = ({ avatarUrl }) => {
           ref={wrapperRef}
         >
           <div role="none">
-            <a
+            {/* <a
               href="#"
               className="text-gray-700 block px-4 py-2 text-sm hover:bg-blue-50"
               role="menuitem"
@@ -59,7 +59,7 @@ const ProfileDropdown: FC<Props> = ({ avatarUrl }) => {
               id="menu-item-1"
             >
               Support
-            </a>
+            </a> */}
             <button
               className="text-gray-700 px-4 py-2 text-sm hover:bg-blue-50 flex w-full"
               role="menuitem"
