@@ -29,7 +29,7 @@ const Achievements: FC<Props> = ({ user }) => {
               <p className="font-light text-sm text-gray-600">Daily Streak</p>
               <h6 className="font-semibold text-xl">
                 <span className="text-xl mr-2">🔥</span>
-                {user.points} Day Streak
+                {user.streak} Day Streak
               </h6>
             </div>
             <div className="flex flex-col gap-1">
@@ -39,7 +39,7 @@ const Achievements: FC<Props> = ({ user }) => {
                 {user.points} points
               </h6>
             </div>
-            <div className="flex flex-col gap-1">
+            {/* <div className="flex flex-col gap-1">
               <p className="font-light text-sm text-gray-600">
                 Total Submissions
               </p>
@@ -54,7 +54,7 @@ const Achievements: FC<Props> = ({ user }) => {
                 <span className="text-xl mr-2">🎯</span>
                 {user.points} Ratings
               </h6>
-            </div>
+            </div> */}
           </div>
         </>
       ) : (
