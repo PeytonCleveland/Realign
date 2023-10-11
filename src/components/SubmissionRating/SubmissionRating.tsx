@@ -76,6 +76,20 @@ const SubmissionRating: FC<Props> = ({
       }
     }
 
+    if (rating.overall_rating > 4) {
+      const { data: submission } = await supabase
+        .from("submissions")
+        .select("profiles(id, points)")
+        .eq("id", submissionId);
+
+      const awardProfile = submission![0].profiles[0];
+
+      await supabase
+        .from("profiles")
+        .update({ points: awardProfile.points + 5 })
+        .eq("id", awardProfile.id);
+    }
+
     setIsLoading(false);
     notifySuccess();
   };
