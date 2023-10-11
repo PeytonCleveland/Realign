@@ -76,24 +76,22 @@ const SubmissionRating: FC<Props> = ({
       }
     }
 
-    if (rating.overall_rating > 4) {
+    if (rating.overall_rating > 3) {
       const { data: submission } = await supabase
         .from("submissions")
         .select("id, profiles(id, points)")
         .eq("id", submissionId);
-
-      console.log("submission: ", submission);
 
       const awardProfile = submission![0].profiles as unknown as {
         id: string;
         points: number;
       };
 
-      console.log("profile: ", awardProfile);
+      const pointsAwarded = rating.overall_rating > 4 ? 5 : 3;
 
       await supabase
         .from("profiles")
-        .update({ points: awardProfile.points + 5 })
+        .update({ points: awardProfile.points + pointsAwarded })
         .eq("id", awardProfile.id);
     }
 
