@@ -7,7 +7,7 @@ const Home = () => {
     <>
       <Header />
       <Page>
-        <div className="w-full bg-gray-50 relative">
+        <div className="w-full bg-gray-50 relative overflow-x-hidden">
           <span className="absolute -right-[180px] -bottom-10 h-full w-[550px] origin-bottom-right rotate-12">
             <Image src="/bg-texture.png" fill={true} alt="bg" />
           </span>
