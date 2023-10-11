@@ -82,7 +82,11 @@ const SubmissionRating: FC<Props> = ({
         .select("profiles(id, points)")
         .eq("id", submissionId);
 
+      console.log("submission: ", submission);
+
       const awardProfile = submission![0].profiles[0];
+
+      console.log("profile: ", awardProfile);
 
       await supabase
         .from("profiles")
