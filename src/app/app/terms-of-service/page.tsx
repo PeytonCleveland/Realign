@@ -16,7 +16,7 @@ const TermsOfService = () => {
             1. Introduction
           </h2>
           <p className="text-sm font-light text-gray-600">
-            <strong>Platform Overview:</strong> Realign is Omni Federal's
+            <strong>Platform Overview:</strong> Realign is Omni Federal&apos;s
             exclusive platform, dedicated to collecting SFT/RLHF data to bolster
             the development of advanced language models.
           </p>
@@ -79,8 +79,8 @@ const TermsOfService = () => {
           </p>
           <p className="text-sm font-light text-gray-600">
             <strong>Usage Limitation:</strong> The data will be exclusively used
-            for enhancing our language models and won't be distributed or shared
-            with third parties without proper authorization.
+            for enhancing our language models and won&apos;t be distributed or
+            shared with third parties without proper authorization.
           </p>
         </div>
 
