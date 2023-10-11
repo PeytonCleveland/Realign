@@ -35,7 +35,7 @@ const Signup = () => {
       email,
       password,
       options: {
-        emailRedirectTo: "https://realign.omnifederal/auth/callback",
+        emailRedirectTo: "https://realign.omnifederal.com/auth/callback",
       },
     });
 
