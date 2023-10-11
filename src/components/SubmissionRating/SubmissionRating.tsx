@@ -84,14 +84,17 @@ const SubmissionRating: FC<Props> = ({
 
       console.log("submission: ", submission);
 
-      const awardProfile = submission![0].profiles;
+      const awardProfile = submission![0].profiles as unknown as {
+        id: string;
+        points: number;
+      };
 
       console.log("profile: ", awardProfile);
 
-      // await supabase
-      //   .from("profiles")
-      //   .update({ points: awardProfile.points + 5 })
-      //   .eq("id", awardProfile.id);
+      await supabase
+        .from("profiles")
+        .update({ points: awardProfile.points + 5 })
+        .eq("id", awardProfile.id);
     }
 
     setIsLoading(false);
