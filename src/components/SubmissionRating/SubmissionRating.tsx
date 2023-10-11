@@ -84,7 +84,7 @@ const SubmissionRating: FC<Props> = ({
 
       console.log("submission: ", submission);
 
-      const awardProfile = submission![0].profiles[0];
+      const awardProfile = submission![0].profiles;
 
       console.log("profile: ", awardProfile);
 
