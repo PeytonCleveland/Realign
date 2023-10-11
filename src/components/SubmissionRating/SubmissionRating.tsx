@@ -79,7 +79,7 @@ const SubmissionRating: FC<Props> = ({
     if (rating.overall_rating > 4) {
       const { data: submission } = await supabase
         .from("submissions")
-        .select("profiles(id, points)")
+        .select("id, profiles(id, points)")
         .eq("id", submissionId);
 
       console.log("submission: ", submission);
