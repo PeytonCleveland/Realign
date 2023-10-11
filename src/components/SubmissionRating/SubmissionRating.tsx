@@ -88,10 +88,10 @@ const SubmissionRating: FC<Props> = ({
 
       console.log("profile: ", awardProfile);
 
-      await supabase
-        .from("profiles")
-        .update({ points: awardProfile.points + 5 })
-        .eq("id", awardProfile.id);
+      // await supabase
+      //   .from("profiles")
+      //   .update({ points: awardProfile.points + 5 })
+      //   .eq("id", awardProfile.id);
     }
 
     setIsLoading(false);
