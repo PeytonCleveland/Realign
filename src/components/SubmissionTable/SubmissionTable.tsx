@@ -69,7 +69,7 @@ const SubmissionTable: FC<Props> = ({ submissions }) => {
                     width={45}
                     height={45}
                     alt="avatar"
-                    src={submission.user.avatar}
+                    src={submission.user.avatar ?? "/default.png"}
                   />
                 </div>
               </div>
