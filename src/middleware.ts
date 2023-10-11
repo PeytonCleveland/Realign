@@ -48,5 +48,5 @@ export async function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: "/((?!api|invalid-email|static|.*\\..*|_next).*)",
+  matcher: "/((?!api|invalid-email|static|auth/callback|.*\\..*|_next).*)",
 };
