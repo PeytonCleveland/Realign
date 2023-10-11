@@ -84,7 +84,7 @@ const SubmissionDetails = async ({
               );
             })}
           </div>
-          {data[0].user_id !== user?.id ? null : (
+          {data[0].user_id === user?.id ? null : (
             <SubmissionRating
               userId={user!.id}
               submissionId={params.submissionId}
