@@ -169,6 +169,7 @@ const EditSubmission = () => {
   const [isResponseLoading, setIsResponseLoading] = useState(false);
   const [response, setResponse] = useState("");
   const [user, setUser] = useState<any>(null);
+  const [submissionUserId, setSubmissionUserId] = useState<string>("");
 
   const supabase = createPagesBrowserClient();
   const params = useParams();
@@ -252,13 +253,14 @@ const EditSubmission = () => {
       setPrompt(submission![0].prompt);
       setResponse(submission![0].response);
       setSelectedTags(submission![0].tags);
+      setSubmissionUserId(submission![0].user_id);
     };
 
     fetchUser();
     fetchSubmission();
   }, [supabase.auth]);
 
-  if (!user || user.id === submissionId) return null;
+  if (!user || user.id !== submissionUserId) return null;
 
   return (
     <main className="flex flex-col flex-1 w-full">
