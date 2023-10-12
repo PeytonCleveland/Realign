@@ -32,7 +32,7 @@ const Countdown = () => {
   });
 
   return (
-    <p className="text-lg text-blue-600 sm:text-xl">{`${timeLeft.days} D ${timeLeft.hours} Hrs ${timeLeft.minutes} Min ${timeLeft.seconds} Sec`}</p>
+    <p className="text-lg text-blue-600 font-semibold sm:text-xl">{`${timeLeft.days} Days ${timeLeft.hours} Hours ${timeLeft.minutes} Minutes ${timeLeft.seconds} Seconds`}</p>
   );
 };
 
