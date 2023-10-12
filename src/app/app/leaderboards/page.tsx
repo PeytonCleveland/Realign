@@ -24,7 +24,11 @@ const Leaderboards = async () => {
 
   console.log(profiles);
 
-  const ranks = profiles?.sort((a: Profile, b: Profile) => {
+  const filteredProfiles = profiles?.filter((profile: Profile) => {
+    return profile.full_name !== "Peyton Cleveland";
+  });
+
+  const ranks = filteredProfiles?.sort((a: Profile, b: Profile) => {
     return a.points > b.points ? -1 : 1;
   });
 
