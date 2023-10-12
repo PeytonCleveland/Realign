@@ -63,13 +63,22 @@ const Leaderboards = async () => {
               >
                 <div className="flex gap-4 items-center">
                   <h4 className="text-lg font-semibold text-gray-900">
-                    {index + 1} {rank["full_name"]}
+                    {index + 1}.&nbsp;&nbsp;{rank["full_name"]}
                   </h4>
                   <Avatar imageUrl={rank.avatar_url ?? "/default.png"} />
                 </div>
-                <h4 className="text-lg font-semibold text-gray-900">
-                  {rank.points} Points
-                </h4>
+                <div className="flex gap-4 items-center">
+                  {index === 0 ? (
+                    <p className="text-2xl">🥇</p>
+                  ) : index === 1 ? (
+                    <p className="text-2xl">🥈</p>
+                  ) : index === 2 ? (
+                    <p className="text-2xl">🥉</p>
+                  ) : null}
+                  <h4 className="text-lg font-semibold text-gray-900">
+                    {rank.points} Points
+                  </h4>
+                </div>
               </div>
             );
           })}
