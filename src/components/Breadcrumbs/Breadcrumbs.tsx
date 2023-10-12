@@ -24,7 +24,7 @@ const Breadcrumbs: FC<Props> = ({ items, className }) => {
               href={item.href}
               className={
                 item.active
-                  ? "text-black font-semibold"
+                  ? "text-black font-semibold text-sm"
                   : "text-gray-500 text-sm"
               }
             >
