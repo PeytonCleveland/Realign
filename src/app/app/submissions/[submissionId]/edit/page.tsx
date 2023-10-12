@@ -262,6 +262,9 @@ const EditSubmission = () => {
 
   if (!user || user.id !== submissionUserId) return null;
 
+  console.log("user id: ", user?.id);
+  console.log("submission user: ", submissionUserId);
+
   return (
     <main className="flex flex-col flex-1 w-full">
       <div className="w-full bg-gray-50">
