@@ -249,6 +249,9 @@ const EditSubmission = () => {
         .select()
         .eq("id", submissionId);
       console.log(submission);
+      setPrompt(submission![0].prompt);
+      setResponse(submission![0].response);
+      setSelectedTags(submission![0].tags);
     };
 
     fetchUser();
@@ -267,8 +270,12 @@ const EditSubmission = () => {
                 href: "/app/submissions",
               },
               {
-                text: `${submissionId.substring(0, 8)}...`,
+                text: `${submissionId.substring(0, 10)}...`,
                 href: `/app/submissions/${submissionId}`,
+              },
+              {
+                text: `Edit`,
+                href: `/app/submissions/${submissionId}/edit`,
                 active: true,
               },
             ]}
