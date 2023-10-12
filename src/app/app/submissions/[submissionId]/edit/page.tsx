@@ -259,7 +259,7 @@ const EditSubmission = () => {
     fetchSubmission();
   }, [supabase.auth]);
 
-  if (user && user.id !== submissionUserId)
+  if (user && submissionUserId !== "" && user.id !== submissionUserId)
     redirect(`/app/submissions/${submissionId}`);
 
   return (
