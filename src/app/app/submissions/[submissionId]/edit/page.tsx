@@ -214,12 +214,14 @@ const EditSubmission = () => {
   const handleSubmit = async () => {
     setIsSubmissionLoading(true);
 
-    const { error } = await supabase.from("submissions").update({
-      prompt: prompt,
-      response: response,
-      tags: selectedTags,
-      user_id: user.id,
-    });
+    const { error } = await supabase
+      .from("submissions")
+      .update({
+        prompt: prompt,
+        response: response,
+        tags: selectedTags,
+      })
+      .eq("id", submissionId);
 
     if (error) console.log(error);
 
