@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { createPagesBrowserClient } from "@supabase/auth-helpers-nextjs";
 import toast from "react-hot-toast";
-import { useParams, redirect } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import TextareaAutosize from "react-textarea-autosize";
 import Breadcrumbs from "@/components/Breadcrumbs";
 
@@ -173,10 +173,11 @@ const EditSubmission = () => {
 
   const supabase = createPagesBrowserClient();
   const params = useParams();
+  const router = useRouter();
 
   const submissionId = params.submissionId as string;
 
-  const notify = () => toast.success("Data sumbitted succesfully");
+  const notify = () => toast.success("Sumbitted updated succesfully");
 
   const handleGenerateResponse = async () => {
     setResponse("");
@@ -227,7 +228,7 @@ const EditSubmission = () => {
 
     setIsSubmissionLoading(false);
     notify();
-    redirect(`/app/submissions/${submissionId}`);
+    router.push(`/app/submissions/${submissionId}`);
   };
 
   const handleClear = () => {
