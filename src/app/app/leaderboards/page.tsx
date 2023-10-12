@@ -61,14 +61,11 @@ const Leaderboards = async () => {
                 key={rank.id}
                 className="w-full flex items-center justify-between px-6 py-4 bg-gray-50 border-b-2 border-gray-100"
               >
-                <div className="flex gap-2 items-center">
+                <div className="flex gap-4 items-center">
                   <h4 className="text-lg font-semibold text-gray-900">
-                    {index + 1}
+                    {index + 1} {rank["full_name"]}
                   </h4>
                   <Avatar imageUrl={rank.avatar_url ?? "/default.png"} />
-                  <h4 className="text-lg font-semibold text-gray-900">
-                    {rank["full_name"]}
-                  </h4>
                 </div>
                 <h4 className="text-lg font-semibold text-gray-900">
                   {rank.points} Points
