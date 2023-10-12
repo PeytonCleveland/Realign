@@ -1,6 +1,16 @@
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
+import { cookies } from "next/headers";
 import { Breadcrumbs, Page } from "@/components";
 
-const Leaderboards = () => {
+const Leaderboards = async () => {
+  const supabase = createServerComponentClient({
+    cookies,
+  });
+
+  const { data: profiles } = await supabase.from("profiles").select();
+
+  console.log(profiles);
+
   return (
     <Page>
       <div className="w-full bg-gray-50">
