@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { createPagesBrowserClient } from "@supabase/auth-helpers-nextjs";
 import toast from "react-hot-toast";
-import { useParams } from "next/navigation";
+import { useParams, redirect } from "next/navigation";
 import TextareaAutosize from "react-textarea-autosize";
 import Breadcrumbs from "@/components/Breadcrumbs";
 
@@ -249,7 +249,6 @@ const EditSubmission = () => {
         .from("submissions")
         .select()
         .eq("id", submissionId);
-      console.log(submission);
       setPrompt(submission![0].prompt);
       setResponse(submission![0].response);
       setSelectedTags(submission![0].tags);
@@ -260,10 +259,8 @@ const EditSubmission = () => {
     fetchSubmission();
   }, [supabase.auth]);
 
-  if (!user || user.id !== submissionUserId) return null;
-
-  console.log("user id: ", user?.id);
-  console.log("submission user: ", submissionUserId);
+  if (user && user.id !== submissionUserId)
+    redirect(`/app/submissions/${submissionId}`);
 
   return (
     <main className="flex flex-col flex-1 w-full">
