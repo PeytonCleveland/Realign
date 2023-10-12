@@ -25,7 +25,7 @@ const Leaderboards = async () => {
   console.log(profiles);
 
   const ranks = profiles?.sort((a: Profile, b: Profile) => {
-    return a.points > b.points ? 1 : -1;
+    return a.points > b.points ? -1 : 1;
   });
 
   console.log("ranks: ", ranks);
