@@ -9,9 +9,15 @@ interface Props {
   user: any;
   activity?: any;
   rating?: any;
+  canEdit?: boolean;
 }
 
-const ActivityCard: FC<Props> = ({ activity, user, rating }) => {
+const ActivityCard: FC<Props> = ({
+  activity,
+  user,
+  rating,
+  canEdit = false,
+}) => {
   const ratingSwitch = (rating: number) => {
     switch (rating) {
       case 5:
@@ -87,7 +93,7 @@ const ActivityCard: FC<Props> = ({ activity, user, rating }) => {
               : `Submitted on ${new Date(activity.created_at).toDateString()}`}
           </p>
         </div>
-        {activity ? (
+        {canEdit ? (
           <button className="text-white flex gap-2 items-center">
             Edit
             <svg

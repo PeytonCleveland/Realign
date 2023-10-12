@@ -70,7 +70,11 @@ const SubmissionDetails = async ({
       <div className="mb-6 mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8 w-full gap-8 flex flex-col">
         <div className="flex w-full gap-12">
           <div className="flex flex-[2] flex-col">
-            <ActivityCard user={data[0].profiles} activity={data[0]} />
+            <ActivityCard
+              user={data[0].profiles}
+              activity={data[0]}
+              canEdit={data[0].profiles.id === user?.id}
+            />
             {ratings?.map((rating, index) => {
               return (
                 <>
