@@ -73,7 +73,9 @@ const SubmissionDetails = async ({
             <ActivityCard
               user={data[0].profiles}
               activity={data[0]}
-              canEdit={data[0].profiles.id === user?.id}
+              canEdit={
+                data[0].profiles.id === user?.id && ratings?.length === 0
+              }
             />
             {ratings?.map((rating, index) => {
               return (
