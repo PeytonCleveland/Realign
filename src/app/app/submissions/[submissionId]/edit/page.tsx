@@ -214,7 +214,7 @@ const EditSubmission = () => {
   const handleSubmit = async () => {
     setIsSubmissionLoading(true);
 
-    const { error } = await supabase.from("submissions").insert({
+    const { error } = await supabase.from("submissions").update({
       prompt: prompt,
       response: response,
       tags: selectedTags,
@@ -261,6 +261,8 @@ const EditSubmission = () => {
 
   if (user && submissionUserId !== "" && user.id !== submissionUserId)
     redirect(`/app/submissions/${submissionId}`);
+
+  console.log(selectedTags);
 
   return (
     <main className="flex flex-col flex-1 w-full">
