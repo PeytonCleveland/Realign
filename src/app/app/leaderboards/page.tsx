@@ -54,12 +54,22 @@ const Leaderboards = async () => {
       </div>
 
       <div className="flex w-full gap-4 mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8 justify-between">
-        <div className="w-full border-2 border-blue-600 rounded-md shadow-sm flex flex-col gap-2 justify-center items-center p-16">
-          <h5 className="text-4xl">⏰</h5>
-          <h6 className="font-semibold text-xl">
-            Leaderboards will take up to 72 hours to populate.
-          </h6>
-          <p className="text-gray-600 font-light">Check back soon!</p>
+        <div className="w-full border-2 border-blue-600 rounded-md shadow-sm flex flex-col p-16">
+          {ranks?.map((rank, index) => {
+            return (
+              <div
+                key={rank.id}
+                className="w-full flex items-center justify-between p-6 bg-gray-50 border-t-2 border-gray-100"
+              >
+                <h4 className="text-lg font-semibold text-gray-900">
+                  #{index}. {rank["full_name"]}
+                </h4>
+                <h4 className="text-lg font-semibold text-gray-900">
+                  {rank.points} Points
+                </h4>
+              </div>
+            );
+          })}
         </div>
       </div>
     </Page>
