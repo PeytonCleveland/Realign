@@ -263,8 +263,6 @@ const EditSubmission = () => {
   if (user && submissionUserId !== "" && user.id !== submissionUserId)
     redirect(`/app/submissions/${submissionId}`);
 
-  console.log(selectedTags);
-
   return (
     <main className="flex flex-col flex-1 w-full">
       <div className="w-full bg-gray-50">
