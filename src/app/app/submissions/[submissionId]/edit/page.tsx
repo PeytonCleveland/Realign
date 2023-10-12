@@ -258,6 +258,8 @@ const EditSubmission = () => {
     fetchSubmission();
   }, [supabase.auth]);
 
+  if (user.id === submissionId) return null;
+
   return (
     <main className="flex flex-col flex-1 w-full">
       <div className="w-full bg-gray-50">
