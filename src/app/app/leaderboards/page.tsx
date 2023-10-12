@@ -2,6 +2,19 @@ import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { Breadcrumbs, Page } from "@/components";
 
+interface Profile {
+  id: string;
+  updated_at: string;
+  full_name: string;
+  avatar_url: string;
+  onboarded: boolean;
+  contributions: number;
+  points: number;
+  streak: number;
+  submissions: number;
+  ratings: number;
+}
+
 const Leaderboards = async () => {
   const supabase = createServerComponentClient({
     cookies,
@@ -10,6 +23,12 @@ const Leaderboards = async () => {
   const { data: profiles } = await supabase.from("profiles").select();
 
   console.log(profiles);
+
+  const ranks = profiles?.sort((a: Profile, b: Profile) => {
+    return a.points > b.points ? 1 : -1;
+  });
+
+  console.log("ranks: ", ranks);
 
   return (
     <Page>
