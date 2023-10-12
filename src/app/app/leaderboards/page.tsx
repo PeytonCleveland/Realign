@@ -51,7 +51,7 @@ const Leaderboards = async () => {
             submissions!&nbsp;<span className="text-lg">🏆</span>
           </p>
 
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-4 mt-4">
             <p className="text-lg font-bold text-gray-900 sm:text-xl">
               Event ends in:
             </p>
