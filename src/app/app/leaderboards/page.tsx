@@ -1,6 +1,6 @@
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
-import { Breadcrumbs, Page } from "@/components";
+import { Avatar, Breadcrumbs, Page } from "@/components";
 
 interface Profile {
   id: string;
@@ -22,8 +22,6 @@ const Leaderboards = async () => {
 
   const { data: profiles } = await supabase.from("profiles").select();
 
-  console.log(profiles);
-
   const filteredProfiles = profiles?.filter((profile: Profile) => {
     return profile.full_name !== "Peyton Cleveland";
   });
@@ -31,8 +29,6 @@ const Leaderboards = async () => {
   const ranks = filteredProfiles?.sort((a: Profile, b: Profile) => {
     return a.points > b.points ? -1 : 1;
   });
-
-  console.log("ranks: ", ranks);
 
   return (
     <Page>
@@ -65,9 +61,12 @@ const Leaderboards = async () => {
                 key={rank.id}
                 className="w-full flex items-center justify-between p-6 bg-gray-50 border-b-2 border-gray-100"
               >
-                <h4 className="text-lg font-semibold text-gray-900">
-                  {index + 1}. {rank["full_name"]}
-                </h4>
+                <div className="flex gap-4 items-center">
+                  <Avatar imageUrl={rank.avatar_url ?? "/default.png"} />
+                  <h4 className="text-lg font-semibold text-gray-900">
+                    {index + 1}. {rank["full_name"]}
+                  </h4>
+                </div>
                 <h4 className="text-lg font-semibold text-gray-900">
                   {rank.points} Points
                 </h4>
