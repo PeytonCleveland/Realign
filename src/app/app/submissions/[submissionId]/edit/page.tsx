@@ -309,6 +309,7 @@ const EditSubmission = () => {
                     value={tag.title}
                     className="hidden peer"
                     onChange={(e) => handleTagChange(e)}
+                    checked={selectedTags.includes(tag.title)}
                   />
                   <label
                     htmlFor={tag.id}
