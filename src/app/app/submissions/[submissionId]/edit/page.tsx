@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { createPagesBrowserClient } from "@supabase/auth-helpers-nextjs";
 import toast from "react-hot-toast";
-import { useParams, useRouter } from "next/navigation";
+import { useParams, useRouter, redirect } from "next/navigation";
 import TextareaAutosize from "react-textarea-autosize";
 import Breadcrumbs from "@/components/Breadcrumbs";
 
