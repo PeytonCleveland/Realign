@@ -326,7 +326,7 @@ const NewSubmission = () => {
               Prompt
             </label>
 
-            <button
+            {/* <button
               onClick={handleGeneratePrompt}
               disabled={isPromptLoading}
               className="text-sm bg-gray-700 hover:bg-gray-600 disabled:bg-gray-400 focus:ring-1 ring-blue-600 ring-offset-2 text-white px-2.5 py-1.5 rounded-md flex items-center justify-center gap-2"
@@ -340,7 +340,7 @@ const NewSubmission = () => {
               >
                 <path d="M11.983 1.907a.75.75 0 00-1.292-.657l-8.5 9.5A.75.75 0 002.75 12h6.572l-1.305 6.093a.75.75 0 001.292.657l8.5-9.5A.75.75 0 0017.25 8h-6.572l1.305-6.093z" />
               </svg>
-            </button>
+            </button> */}
           </div>
 
           <TextareaAutosize
