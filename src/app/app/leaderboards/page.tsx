@@ -1,6 +1,6 @@
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
-import { Avatar, Breadcrumbs, Page } from "@/components";
+import { Avatar, Breadcrumbs, Countdown, Page } from "@/components";
 
 interface Profile {
   id: string;
@@ -50,6 +50,13 @@ const Leaderboards = async () => {
             Earn points and compete for rewards by submitting data and rating
             submissions!&nbsp;<span className="text-lg">🏆</span>
           </p>
+
+          <div className="flex items-center gap-6">
+            <p className="text-lg font-bold text-gray-900 sm:text-xl">
+              Event ends in:
+            </p>
+            <Countdown />
+          </div>
         </div>
       </div>
 
