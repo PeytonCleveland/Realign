@@ -54,15 +54,15 @@ const Leaderboards = async () => {
       </div>
 
       <div className="flex w-full gap-4 mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8 justify-between">
-        <div className="w-full border-2 border-blue-600 rounded-md shadow-sm flex flex-col p-16">
+        <div className="w-full border-2 border-blue-600 rounded-md shadow-sm flex flex-col overflow-hidden">
           {ranks?.map((rank, index) => {
             return (
               <div
                 key={rank.id}
-                className="w-full flex items-center justify-between p-6 bg-gray-50 border-t-2 border-gray-100"
+                className="w-full flex items-center justify-between p-6 bg-gray-50 border-b-2 border-gray-100"
               >
                 <h4 className="text-lg font-semibold text-gray-900">
-                  #{index}. {rank["full_name"]}
+                  {index + 1}. {rank["full_name"]}
                 </h4>
                 <h4 className="text-lg font-semibold text-gray-900">
                   {rank.points} Points
