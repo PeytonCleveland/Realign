@@ -227,9 +227,7 @@ const EditSubmission = () => {
 
     setIsSubmissionLoading(false);
     notify();
-    setPrompt("");
-    setResponse("");
-    setSelectedTags("");
+    redirect(`/app/submissions/${submissionId}`);
   };
 
   const handleClear = () => {
@@ -391,7 +389,7 @@ const EditSubmission = () => {
             disabled={isSubmissionLoading || prompt === "" || response === ""}
             className="bg-blue-600 text-white disabled:bg-blue-300 px-5 py-2 font-medium rounded-md flex items-center gap-2 hover:bg-blue-500 focus:bg-blue-600 focus:ring-1 ring-blue-500 ring-offset-2"
           >
-            Submit
+            Update
           </button>
 
           <button
