@@ -50,17 +50,16 @@ const Leaderboards = async () => {
             Earn points and compete for rewards by submitting data and rating
             submissions!&nbsp;<span className="text-lg">🏆</span>
           </p>
-
-          <div className="flex items-center gap-4 mt-4">
-            <p className="text-lg font-bold text-gray-900 sm:text-xl">
-              Event ends in:
-            </p>
-            <Countdown />
-          </div>
         </div>
       </div>
 
       <div className="flex w-full gap-4 mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8 justify-between">
+        <div className="flex items-center gap-4 mt-4">
+          <p className="text-lg font-bold text-gray-900 sm:text-xl">
+            Event ends in:
+          </p>
+          <Countdown />
+        </div>
         <div className="w-full border-2 border-blue-600 rounded-md shadow-sm flex flex-col overflow-hidden">
           {ranks?.map((rank, index) => {
             return (
