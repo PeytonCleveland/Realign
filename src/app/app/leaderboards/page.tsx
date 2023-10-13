@@ -29,7 +29,7 @@ const Leaderboards = async () => {
   const filteredProfiles = profiles?.filter((profile: Profile) => {
     return (
       profile.full_name !== "Peyton Cleveland" &&
-      !(user?.email?.includes("@teambespin.us") && user.id === profile.id)
+      !(user?.email?.includes("@teambespin.us") && user.id == profile.id)
     );
   });
 
