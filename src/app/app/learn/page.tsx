@@ -47,7 +47,7 @@ const Learn = async () => {
                 href={item.external_url ?? item.slug}
                 className="flex flex-col w-1/4 border-2 border-gray-300 rounded-md shadow-sm overflow-hidden"
               >
-                <div className="w-full h-[300px] relative">
+                <div className="w-full h-[300px] relative object-cover">
                   <Image src={item.thumbnail_url} fill alt={item.name} />
                 </div>
                 <h6>{item.name}</h6>
