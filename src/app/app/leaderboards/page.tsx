@@ -20,10 +20,17 @@ const Leaderboards = async () => {
     cookies,
   });
 
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
   const { data: profiles } = await supabase.from("profiles").select();
 
   const filteredProfiles = profiles?.filter((profile: Profile) => {
-    return profile.full_name !== "Peyton Cleveland";
+    return (
+      profile.full_name !== "Peyton Cleveland" &&
+      !(user?.email?.includes("@teambespin.us") && user.id === profile.id)
+    );
   });
 
   const ranks = filteredProfiles?.sort((a: Profile, b: Profile) => {
