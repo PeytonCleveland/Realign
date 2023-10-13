@@ -76,6 +76,9 @@ const Learn = async () => {
                       </svg>
                     ) : null}
                   </div>
+                  <p className="text-xs font-light text-gray-600">
+                    {item.description.slice(0, 30)}...
+                  </p>
                 </div>
               </Link>
             );
