@@ -316,7 +316,7 @@ const NewSubmission = () => {
               </h6>
             </div>
 
-            <p className="text-xs font-light text-gray-700">
+            <p className="text-sm font-light text-gray-700">
               Realign is a commercial offering deployed on commercial cloud
               infrastructure. Do <strong>not</strong> upload classified or CUI
               data to Realign. Failure to safeguard classified or CUI data is a
