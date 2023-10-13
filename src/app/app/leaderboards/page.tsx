@@ -26,7 +26,7 @@ const Leaderboards = async () => {
   const filteredProfiles = profiles?.filter((profile: Profile) => {
     return (
       profile.full_name !== "Peyton Cleveland" &&
-      !profile.email.includes("@teambespin.us")
+      !profile.email?.includes("@teambespin.us")
     );
   });
 
