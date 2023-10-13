@@ -44,6 +44,7 @@ const Learn = async () => {
             return (
               <Link
                 key={item.slug}
+                target={item.external_url ? "_blank" : undefined}
                 href={item.external_url ?? item.slug}
                 className="flex flex-col w-1/4 border-2 border-gray-200 rounded-md shadow-sm overflow-hidden hover:border-blue-600"
               >
