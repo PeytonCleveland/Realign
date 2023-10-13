@@ -45,7 +45,7 @@ const Learn = async () => {
               <Link
                 key={item.slug}
                 href={item.external_url ?? item.slug}
-                className="flex flex-1 border-2 border-gray-300 rounded-md shadow-sm"
+                className="flex flex-col w-1/4 border-2 border-gray-300 rounded-md shadow-sm overflow-hidden"
               >
                 <div className="w-full h-[300px]">
                   <Image src={item.thumbnail_url} fill alt={item.name} />
