@@ -297,12 +297,30 @@ const NewSubmission = () => {
       <div className="flex w-full flex-col gap-8 mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8">
         <div className="w-full flex flex-col gap-4">
           <div className="w-full p-6 flex justify-between items-center rounded-md shadow-sm bg-yellow-50 border-2 border-yellow-500">
-            <h6 className="text-gray-900 text-lg font-semibold">
-              Data Safeguarding
-            </h6>
-            <p className="text-sm font-light text-gray-600">
+            <div className="flex gap-2 items-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-6 h-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"
+                />
+              </svg>
+
+              <h6 className="text-gray-900 text-lg font-semibold">
+                Data Protection
+              </h6>
+            </div>
+
+            <p className="text-sm font-light text-gray-700">
               Realign is a commercial offering deployed on commercial cloud
-              infrastructure. Do <strong>not</strong> upload Claassified or CUI
+              infrastructure. Do <strong>not</strong> upload Classified or CUI
               data to Realign.
             </p>
           </div>
