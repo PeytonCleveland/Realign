@@ -46,8 +46,13 @@ const Learn = async () => {
                 href={item.external_url ?? item.slug}
                 className="flex flex-col w-1/4 border-2 border-gray-200 rounded-md shadow-sm overflow-hidden hover:border-blue-600"
               >
-                <div className="w-full h-[150px] relative object-contain">
-                  <Image src={item.thumbnail_url} fill alt={item.name} />
+                <div className="w-full h-[150px] relative">
+                  <Image
+                    src={item.thumbnail_url}
+                    fill
+                    alt={item.name}
+                    className="object-contain"
+                  />
                 </div>
                 <div className="flex flex-col gap-2 p-3 w-full">
                   <div className="flex justify-between items-center w-full">
