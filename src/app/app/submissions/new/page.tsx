@@ -296,6 +296,16 @@ const NewSubmission = () => {
       </div>
       <div className="flex w-full flex-col gap-8 mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8">
         <div className="w-full flex flex-col gap-4">
+          <div className="w-full p-6 flex justify-between items-center rounded-md shadow-sm bg-yellow-50 border-2 border-yellow-500">
+            <h6 className="text-gray-900 text-lg font-semibold">
+              Data Safeguarding
+            </h6>
+            <p className="text-sm font-light text-gray-600">
+              Realign is a commercial offering deployed on commercial cloud
+              infrastructure. Do <strong>not</strong> upload Claassified or CUI
+              data to Realign.
+            </p>
+          </div>
           <label className="block font-medium text-gray-700">Tags</label>
           <ul className="flex gap-2 flex-wrap">
             {tags.map((tag) => {
