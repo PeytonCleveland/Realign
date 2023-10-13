@@ -86,9 +86,9 @@ const Learn = async () => {
             );
           })}
         </div>
-        <p className="font-bold text-gray-900 sm:text-xl mt-4">
+        {/* <p className="font-bold text-gray-900 sm:text-xl mt-4">
           Training & Finetuning
-        </p>
+        </p> */}
       </div>
     </Page>
   );
