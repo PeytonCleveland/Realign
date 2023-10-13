@@ -13,6 +13,10 @@ const Learn = async () => {
     .from("training_items")
     .select();
 
+  const essentials = trainingItems?.filter((item) => {
+    return item.category === "essentials";
+  });
+
   return (
     <Page>
       <div className="w-full bg-gray-50">
@@ -38,7 +42,7 @@ const Learn = async () => {
       <div className="flex flex-col w-full gap-4 mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8 justify-between">
         <p className="font-bold text-gray-900 sm:text-xl">LLM Essentials</p>
         <div className="flex w-full gap-8">
-          {trainingItems?.map((item) => {
+          {essentials?.map((item) => {
             return (
               <Link
                 key={item.slug}
@@ -82,7 +86,7 @@ const Learn = async () => {
             );
           })}
         </div>
-        <p className="font-bold text-gray-900 sm:text-xl">
+        <p className="font-bold text-gray-900 sm:text-xl mt-4">
           Training & Finetuning
         </p>
       </div>
