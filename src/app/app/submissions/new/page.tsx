@@ -296,7 +296,7 @@ const NewSubmission = () => {
       </div>
       <div className="flex w-full flex-col gap-8 mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8">
         <div className="w-full flex flex-col gap-4">
-          <div className="w-full px-6 py-4 flex mb-2 gap-8 justify-between items-center rounded-md shadow-sm bg-yellow-50 border-2 border-yellow-400">
+          <div className="w-full px-6 py-4 flex mb-2 gap-12 justify-between items-center rounded-md shadow-sm bg-yellow-50 border-2 border-yellow-400">
             <div className="flex gap-2 items-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -316,7 +316,7 @@ const NewSubmission = () => {
               </h6>
             </div>
 
-            <p className="text-sm font-light text-gray-700">
+            <p className="text-xs font-light text-gray-700">
               Realign is a commercial offering deployed on commercial cloud
               infrastructure. Do <strong>not</strong> upload classified or CUI
               data to Realign. Failure to safeguard classified or CUI data is a
