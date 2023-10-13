@@ -2,6 +2,7 @@
 
 import { useState, FC } from "react";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import { useRouter } from "next/navigation";
 import { Rating, ThinStar } from "@smastrom/react-rating";
 import toast from "react-hot-toast";
 
@@ -45,6 +46,7 @@ const SubmissionRating: FC<Props> = ({
   );
 
   const supabase = createClientComponentClient();
+  const router = useRouter();
 
   const notifySuccess = () => toast.success("Data sumbitted succesfully");
   const notifyFailure = (error: string) => toast.error(error);
@@ -97,6 +99,7 @@ const SubmissionRating: FC<Props> = ({
 
     setIsLoading(false);
     notifySuccess();
+    router.push("/app/submissions");
   };
 
   const ratingSwitch = (rating: number) => {
