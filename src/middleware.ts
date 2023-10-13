@@ -19,12 +19,12 @@ export async function middleware(req: NextRequest) {
     .select("onboarded")
     .eq("id", session?.user.id);
 
-  const omniEmailRegex = /@omnifederal\.com$/;
+  const validEmailRegex = /@(omnifederal\.com|teambespin\.us)$/;
 
   if (
     session &&
     session.user.email &&
-    !omniEmailRegex.test(session?.user.email) &&
+    !validEmailRegex.test(session?.user.email) &&
     !req.nextUrl.pathname.includes("invalid-email")
   ) {
     return NextResponse.redirect(new URL("/invalid-email", req.url));

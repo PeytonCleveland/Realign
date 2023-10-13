@@ -13,7 +13,7 @@ const Signup = () => {
 
   const router = useRouter();
 
-  const validEmailRegex = /@omnifederal\.com$/;
+  const validEmailRegex = /@(omnifederal\.com|teambespin\.us)$/;
 
   const handleSignUp = async (formData: FormData) => {
     const email = String(formData.get("email"));
@@ -21,7 +21,7 @@ const Signup = () => {
     const confirmPassword = String(formData.get("confirm-password"));
 
     if (!validEmailRegex.test(email)) {
-      setError("You must use an Omni Federal email address.");
+      setError("You must use an Omni or BESPIN email address.");
       return;
     }
 
