@@ -37,7 +37,7 @@ const Learn = async () => {
 
       <div className="flex flex-col w-full gap-4 mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8 justify-between">
         <p className="text-lg font-bold text-gray-900 sm:text-xl">
-          Featured Training
+          LLM Essentials
         </p>
         <div className="flex w-full gap-8 justify-between">
           {trainingItems?.map((item) => {
