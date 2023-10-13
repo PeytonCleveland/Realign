@@ -7,6 +7,8 @@ const configuration = new Configuration({
 
 const openai = new OpenAIApi(configuration);
 
+export const maxDuration = 120;
+
 export async function POST(req: Request) {
   let json;
   try {
