@@ -52,7 +52,9 @@ const Learn = async () => {
                 </div>
                 <div className="flex flex-col gap-2 p-3 w-full">
                   <div className="flex justify-between items-center w-full">
-                    <h6 className="text-gray-900 font-semibold">{item.name}</h6>
+                    <h6 className="text-gray-900 font-semibold text-sm">
+                      {item.name}
+                    </h6>
                     {item.external_url ? (
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
