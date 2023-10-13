@@ -1,6 +1,18 @@
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { Breadcrumbs, Page } from "@/components";
+import { cookies } from "next/headers";
+import Image from "next/image";
+import Link from "next/link";
 
-const Learn = () => {
+const Learn = async () => {
+  const supabase = createServerComponentClient({
+    cookies,
+  });
+
+  const { data: trainingItems } = await supabase
+    .from("training_items")
+    .select();
+
   return (
     <Page>
       <div className="w-full bg-gray-50">
@@ -28,18 +40,20 @@ const Learn = () => {
           Featured Training
         </p>
         <div className="flex w-full gap-8 justify-between">
-          <div className="flex flex-1 border-2 border-gray-300 rounded-md shadow-sm">
-            <h6>Course Name</h6>
-          </div>
-          <div className="flex flex-1 border-2 border-gray-300 rounded-md shadow-sm">
-            <h6>Course Name</h6>
-          </div>
-          <div className="flex flex-1 border-2 border-gray-300 rounded-md shadow-sm">
-            <h6>Course Name</h6>
-          </div>
-          <div className="flex flex-1 border-2 border-gray-300 rounded-md shadow-sm">
-            <h6>Course Name</h6>
-          </div>
+          {trainingItems?.map((item) => {
+            return (
+              <Link
+                key={item.slug}
+                href={item.external_url ?? item.slug}
+                className="flex flex-1 border-2 border-gray-300 rounded-md shadow-sm"
+              >
+                <div className="w-full h-[300px]">
+                  <Image src={item.thumbnail_url} fill alt={item.name} />
+                </div>
+                <h6>{item.name}</h6>
+              </Link>
+            );
+          })}
         </div>
       </div>
     </Page>
