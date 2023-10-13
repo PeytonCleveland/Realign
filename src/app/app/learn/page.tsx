@@ -77,7 +77,7 @@ const Learn = async () => {
                     ) : null}
                   </div>
                   <p className="text-xs font-light text-gray-600">
-                    {item.description.slice(0, 30)}...
+                    {item.description.slice(0, 60)}...
                   </p>
                 </div>
               </Link>
