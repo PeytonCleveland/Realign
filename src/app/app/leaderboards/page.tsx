@@ -4,6 +4,7 @@ import { Avatar, Breadcrumbs, Countdown, Page } from "@/components";
 
 interface Profile {
   id: string;
+  email: string;
   updated_at: string;
   full_name: string;
   avatar_url: string;
@@ -20,16 +21,12 @@ const Leaderboards = async () => {
     cookies,
   });
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
   const { data: profiles } = await supabase.from("profiles").select();
 
   const filteredProfiles = profiles?.filter((profile: Profile) => {
     return (
       profile.full_name !== "Peyton Cleveland" &&
-      !(user?.email?.includes("@teambespin.us") && user.id == profile.id)
+      !profile.email.includes("@teambespin.us")
     );
   });
 
