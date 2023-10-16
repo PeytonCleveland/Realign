@@ -79,7 +79,10 @@ const ProfileInfo: FC<Props> = ({ avatarUrl, canEdit = false, userId }) => {
           className="fixed top-0 left-0 w-screen h-screen bg-gray-900 bg-opacity-60 z-[100] flex justify-center items-center"
           onClick={() => setIsOpen(false)}
         >
-          <div className="flex flex-col p-6 rounded-md shadow-sm gap-4 bg-white">
+          <div
+            className="flex flex-col p-6 rounded-md shadow-sm gap-4 bg-white"
+            onClick={(e) => e.stopPropagation()}
+          >
             <h4 className="text-xl font-semibold text-gray-900">Edit Avatar</h4>
             <label htmlFor="avatar" className="block font-medium text-gray-700">
               Avatar Image{" "}
