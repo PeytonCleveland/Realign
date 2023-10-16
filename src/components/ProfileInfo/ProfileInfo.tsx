@@ -3,6 +3,7 @@
 import { FC, useState } from "react";
 import Image from "next/image";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import { useRouter } from "next/navigation";
 import { nanoid } from "nanoid";
 import toast from "react-hot-toast";
 import Avatar from "../Avatar";
@@ -17,6 +18,7 @@ const ProfileInfo: FC<Props> = ({ avatarUrl, canEdit = false, userId }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [avatarPath, setAvatarPath] = useState<string>();
 
+  const router = useRouter();
   const supabase = createClientComponentClient();
   const notify = () => toast.success("Profile updated succesfully");
 
@@ -52,6 +54,7 @@ const ProfileInfo: FC<Props> = ({ avatarUrl, canEdit = false, userId }) => {
 
     notify();
     setIsOpen(false);
+    router.refresh();
   };
 
   return (
@@ -85,10 +88,7 @@ const ProfileInfo: FC<Props> = ({ avatarUrl, canEdit = false, userId }) => {
           >
             <h4 className="text-xl font-semibold text-gray-900">Edit Avatar</h4>
             <label htmlFor="avatar" className="block font-medium text-gray-700">
-              Avatar Image{" "}
-              <span className="text-sm text-gray-500 font-light ml-1">
-                (optional)
-              </span>
+              Avatar Image
             </label>
             <div className="flex items-center space-x-6 mb-4">
               <div className="shrink-0">
@@ -123,7 +123,12 @@ const ProfileInfo: FC<Props> = ({ avatarUrl, canEdit = false, userId }) => {
                 />
               </label>
             </div>
-            <button onClick={handleUpdateProfile}>Update Avatar</button>
+            <button
+              className="bg-blue-600 self-end text-white py-2 px-4 font-medium shadow-sm rounded-md w-fit flex justify-center items-center gap-2 hover:bg-blue-500 focus:bg-blue-600 focus:ring-1 ring-blue-500 ring-offset-2 disabled:cursor-not-allowed disabled:bg-blue-300"
+              onClick={handleUpdateProfile}
+            >
+              Update Avatar
+            </button>
           </div>
         </div>
       ) : null}
