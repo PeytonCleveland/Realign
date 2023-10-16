@@ -1,14 +1,13 @@
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
-import { useParams } from "next/navigation";
 import { Page } from "@/components";
 
-const Profile = async () => {
+const Profile = async ({ params }: { params: { userId: string } }) => {
   const supabase = createServerComponentClient({
     cookies,
   });
 
-  const { userId } = useParams();
+  const { userId } = params;
   const { data: profiles } = await supabase
     .from("profiles")
     .select()
