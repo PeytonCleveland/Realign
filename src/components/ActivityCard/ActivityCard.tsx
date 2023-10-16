@@ -58,7 +58,9 @@ const ActivityCard: FC<Props> = ({
       }
     >
       <div className="absolute top-0.5 -left-16">
-        <Avatar imageUrl={user.avatar_url ?? "/default.png"} />
+        <Link href={`/app/profile/${user.id}`}>
+          <Avatar imageUrl={user.avatar_url ?? "/default.png"} />
+        </Link>
       </div>
       <span
         className={
