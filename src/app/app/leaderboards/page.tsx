@@ -1,5 +1,6 @@
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
+import Link from "next/link";
 import { Avatar, Breadcrumbs, Countdown, Page } from "@/components";
 
 interface Profile {
@@ -72,9 +73,12 @@ const Leaderboards = async () => {
                 className="w-full flex items-center justify-between px-6 py-4 bg-gray-50 border-b-2 border-gray-100"
               >
                 <div className="flex gap-4 items-center">
-                  <h4 className="text-lg font-semibold text-gray-900">
+                  <Link
+                    href={`app/profile/${rank.id}`}
+                    className="text-lg font-semibold text-gray-900 hover:underline underline-offset-2"
+                  >
                     {index + 1}.&nbsp;&nbsp;{rank["full_name"]}
-                  </h4>
+                  </Link>
                   <Avatar imageUrl={rank.avatar_url ?? "/default.png"} />
                 </div>
                 <div className="flex gap-4 items-center">
