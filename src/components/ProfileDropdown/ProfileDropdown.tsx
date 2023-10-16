@@ -48,6 +48,7 @@ const ProfileDropdown: FC<Props> = ({ avatarUrl, userId }) => {
           <div role="none">
             <Link
               href={`/app/profile/${userId}`}
+              onClick={() => setIsOpen(false)}
               className="text-gray-700 block px-4 py-2 text-sm hover:bg-blue-50"
               role="menuitem"
               id="menu-item-0"
