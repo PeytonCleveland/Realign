@@ -73,13 +73,12 @@ const Leaderboards = async () => {
                 className="w-full flex items-center justify-between px-6 py-4 bg-gray-50 border-b-2 border-gray-100"
               >
                 <div className="flex gap-4 items-center">
-                  <Link
-                    href={`app/profile/${rank.id}`}
-                    className="text-lg font-semibold text-gray-900 hover:underline underline-offset-2"
-                  >
+                  <h2 className="text-lg font-semibold text-gray-900 hover:underline underline-offset-2">
                     {index + 1}.&nbsp;&nbsp;{rank["full_name"]}
+                  </h2>
+                  <Link href={`/app/profile/${rank.id}`}>
+                    <Avatar imageUrl={rank.avatar_url ?? "/default.png"} />
                   </Link>
-                  <Avatar imageUrl={rank.avatar_url ?? "/default.png"} />
                 </div>
                 <div className="flex gap-4 items-center">
                   {index === 0 ? (
