@@ -32,7 +32,7 @@ const Profile = async ({ params }: { params: { userId: string } }) => {
             ]}
             className="mb-12"
           />
-          <div className="flex items-center w-full gap-4">
+          <div className="flex items-center w-full gap-5">
             <ProfileInfo
               avatarUrl={profiles[0].avatar_url}
               canEdit={userId == profiles[0].id}
