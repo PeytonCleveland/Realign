@@ -36,16 +36,16 @@ const Profile = async ({ params }: { params: { userId: string } }) => {
             <div className="relative">
               <Avatar imageUrl={profiles[0].avatar_url} size="lg" />
               {user?.id == userId ? (
-                <div className="absolute left-10 bg-blue-600 rounded-md shadow-sm p-1 bottom-0">
+                <button className="absolute left-10 bg-blue-600 rounded-md shadow-sm p-1.5 bottom-0">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 20 20"
                     fill="currentColor"
-                    className="w-5 h-5 text-white"
+                    className="w-4 h-4 text-white"
                   >
                     <path d="M2.695 14.763l-1.262 3.154a.5.5 0 00.65.65l3.155-1.262a4 4 0 001.343-.885L17.5 5.5a2.121 2.121 0 00-3-3L3.58 13.42a4 4 0 00-.885 1.343z" />
                   </svg>
-                </div>
+                </button>
               ) : null}
             </div>
             <h1 className="text-2xl font-bold text-gray-900 sm:text-3xl">
