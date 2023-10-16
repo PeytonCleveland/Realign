@@ -35,11 +35,11 @@ const Profile = async ({ params }: { params: { userId: string } }) => {
           </div>
         </div>
       </div>
-      <div className="flex flex-col w-full gap-2 mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8 justify-between">
-        <h6 className="text-sm font-semibold text-gray-900">Overview</h6>
+      <div className="flex flex-col w-full gap-3 mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8 justify-between">
+        <h6 className="font-semibold text-gray-900">Overview</h6>
         <div className="flex w-full gap-4 items-center">
-          <div className="w-1/4 h-[175px] rounded-md shadow-sm bg-blue-600 p-6">
-            <p className="text-white font-semibold text-lg">🏆</p>
+          <div className="w-1/4 rounded-md shadow-sm bg-blue-600 p-6">
+            <p className="text-white font-semibold text-2xl">🏆</p>
             <p className="text-white font-semibold text-lg">
               {profiles[0].points}&nbsp;Points
             </p>
