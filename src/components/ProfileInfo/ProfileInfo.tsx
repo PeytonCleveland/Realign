@@ -17,7 +17,10 @@ const ProfileInfo: FC<Props> = ({ avatarUrl, canEdit = false, userId }) => {
       <div className="relative">
         <Avatar imageUrl={avatarUrl} size="lg" />
         {canEdit ? (
-          <button className="absolute left-12 bg-blue-600 rounded-md shadow-sm p-1.5 -bottom-1 hover:bg-blue-500">
+          <button
+            className="absolute left-12 bg-blue-600 rounded-md shadow-sm p-1.5 -bottom-1 hover:bg-blue-500"
+            onClick={() => setIsOpen(true)}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
