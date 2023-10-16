@@ -32,7 +32,7 @@ const Profile = async ({ params }: { params: { userId: string } }) => {
             ]}
             className="mb-12"
           />
-          <div className="flex items-center w-full gap-3">
+          <div className="flex items-center w-full gap-4">
             <div className="relative">
               <Avatar imageUrl={profiles[0].avatar_url} size="lg" />
               {user?.id == userId ? (
