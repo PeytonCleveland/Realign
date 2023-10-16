@@ -37,7 +37,7 @@ const Profile = async ({ params }: { params: { userId: string } }) => {
       </div>
       <div className="flex flex-col w-full gap-3 mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8 justify-between">
         <h6 className="font-semibold text-gray-900">Overview</h6>
-        <div className="flex w-full gap-4 items-center">
+        <div className="flex w-full gap-8 items-center">
           <div className="w-1/4 rounded-md shadow-sm bg-gray-50 border-2 border-gray-200 p-8 flex items-center justify-between">
             <p className="text-white font-semibold text-3xl">🏆</p>
             <p className="text-gray-900 font-semibold text-xl">
