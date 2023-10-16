@@ -1,6 +1,6 @@
 "use client";
 
-import { FC } from "react";
+import { FC, useState } from "react";
 import Avatar from "../Avatar";
 
 interface Props {
@@ -10,6 +10,8 @@ interface Props {
 }
 
 const ProfileInfo: FC<Props> = ({ avatarUrl, canEdit = false, userId }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <div className="relative">
       <Avatar imageUrl={avatarUrl} size="lg" />
