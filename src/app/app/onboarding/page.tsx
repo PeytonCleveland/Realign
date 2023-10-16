@@ -142,7 +142,7 @@ const Onboarding = () => {
             </div>
             <div className="flex flex-col gap-1.5">
               <label
-                htmlFor="firstName"
+                htmlFor="lastName"
                 className="block font-medium text-gray-700"
               >
                 Last Name

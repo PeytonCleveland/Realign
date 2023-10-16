@@ -1,6 +1,10 @@
 "use client";
 
 import { FC, useState } from "react";
+import Image from "next/image";
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import { nanoid } from "nanoid";
+import toast from "react-hot-toast";
 import Avatar from "../Avatar";
 
 interface Props {
@@ -11,6 +15,44 @@ interface Props {
 
 const ProfileInfo: FC<Props> = ({ avatarUrl, canEdit = false, userId }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [avatarPath, setAvatarPath] = useState<string>();
+
+  const supabase = createClientComponentClient();
+  const notify = () => toast.success("Profile updated succesfully");
+
+  const uploadFile = async (file: File) => {
+    if (file) {
+      const { data, error } = await supabase.storage
+        .from("avatars")
+        .upload(`${nanoid()}.${file.name.split(".").at(-1)}`, file, {
+          cacheControl: "3600",
+          upsert: false,
+        });
+
+      if (error) {
+        console.log(error);
+        return;
+      }
+
+      setAvatarPath(data.path);
+    }
+  };
+
+  const handleUpdateProfile = async () => {
+    const { error } = await supabase
+      .from("profiles")
+      .update({
+        avatar_url: `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/avatars/${avatarPath}`,
+      })
+      .eq("id", userId);
+
+    if (error) {
+      console.log(error);
+    }
+
+    notify();
+    setIsOpen(false);
+  };
 
   return (
     <>
@@ -37,8 +79,48 @@ const ProfileInfo: FC<Props> = ({ avatarUrl, canEdit = false, userId }) => {
           className="fixed top-0 left-0 w-screen h-screen bg-gray-900 bg-opacity-60 z-[100] flex justify-center items-center"
           onClick={() => setIsOpen(false)}
         >
-          <div className="flex flex-col p-8 rounded-md shadow-sm gap-4 bg-white">
-            <h4>Edit Avatar</h4>
+          <div className="flex flex-col p-6 rounded-md shadow-sm gap-4 bg-white">
+            <h4 className="text-xl font-semibold text-gray-900">Edit Avatar</h4>
+            <label htmlFor="avatar" className="block font-medium text-gray-700">
+              Avatar Image{" "}
+              <span className="text-sm text-gray-500 font-light ml-1">
+                (optional)
+              </span>
+            </label>
+            <div className="flex items-center space-x-6 mb-4">
+              <div className="shrink-0">
+                <Image
+                  id="preview_img"
+                  className="h-16 w-16 object-cover rounded-full"
+                  height={32}
+                  width={32}
+                  src={
+                    avatarPath
+                      ? `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/avatars/${avatarPath}`
+                      : avatarUrl
+                      ? avatarUrl
+                      : "/default.png"
+                  }
+                  alt="Current profile photo"
+                  priority
+                />
+              </div>
+              <label className="block">
+                <span className="sr-only">Choose profile photo</span>
+                <input
+                  type="file"
+                  name="avatar"
+                  accept=".png,.jpg,.gif"
+                  onChange={async (e) => {
+                    if (e.target.files) {
+                      await uploadFile(e.target.files[0]);
+                    }
+                  }}
+                  className="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:cursor-pointer file:bg-blue-50 file:text-blue-600 hover:file:bg-blue-100"
+                />
+              </label>
+            </div>
+            <button onClick={handleUpdateProfile}>Update Avatar</button>
           </div>
         </div>
       ) : null}
