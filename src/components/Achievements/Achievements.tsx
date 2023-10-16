@@ -39,22 +39,22 @@ const Achievements: FC<Props> = ({ user }) => {
                 {user.points} points
               </h6>
             </div>
-            {/* <div className="flex flex-col gap-1">
+            <div className="flex flex-col gap-1">
               <p className="font-light text-sm text-gray-600">
                 Total Submissions
               </p>
               <h6 className="font-semibold text-xl">
                 <span className="text-xl mr-2">📝</span>
-                {user.points} Submissions
+                {user.submissions} Submissions
               </h6>
             </div>
             <div className="flex flex-col gap-1">
               <p className="font-light text-sm text-gray-600">Total Ratings</p>
               <h6 className="font-semibold text-xl">
                 <span className="text-xl mr-2">🎯</span>
-                {user.points} Ratings
+                {user.ratings} Ratings
               </h6>
-            </div> */}
+            </div>
           </div>
         </>
       ) : (

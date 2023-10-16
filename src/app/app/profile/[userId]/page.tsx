@@ -51,7 +51,7 @@ const Profile = async ({ params }: { params: { userId: string } }) => {
             </p>
           </div>
           <div className="w-1/4 rounded-md shadow-sm bg-gray-50 border-2 border-gray-200 p-8 flex items-center justify-between">
-            <p className="text-white font-semibold text-3xl">👀</p>
+            <p className="text-white font-semibold text-3xl">🎯</p>
             <p className="text-gray-900 font-semibold text-xl">
               {profiles[0].ratings}&nbsp;Ratings
             </p>
