@@ -34,7 +34,7 @@ const ProfileInfo: FC<Props> = ({ avatarUrl, canEdit = false, userId }) => {
       </div>
       {isOpen ? (
         <div
-          className="fixed top-0 left-0 w-screen h-screen bg-gray-900 bg-opacity-60"
+          className="fixed top-0 left-0 w-screen h-screen bg-gray-900 bg-opacity-60 z-[100]"
           onClick={() => setIsOpen(false)}
         ></div>
       ) : null}
