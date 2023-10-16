@@ -94,7 +94,10 @@ const Header = async () => {
                 className="block h-6 w-px rounded-full bg-gray-200"
               ></span>
 
-              <ProfileDropdown avatarUrl={profile["avatar_url"]} />
+              <ProfileDropdown
+                avatarUrl={profile["avatar_url"]}
+                userId={user.id}
+              />
             </div>
           ) : (
             <div className="flex gap-10 items-center">

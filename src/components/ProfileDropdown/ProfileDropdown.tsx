@@ -4,12 +4,14 @@ import { FC, useState, useRef } from "react";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useRouter } from "next/navigation";
 import useOutsideAlerter from "@/lib/outside-click";
+import Link from "next/link";
 
 interface Props {
   avatarUrl: string | null;
+  userId: string;
 }
 
-const ProfileDropdown: FC<Props> = ({ avatarUrl }) => {
+const ProfileDropdown: FC<Props> = ({ avatarUrl, userId }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const wrapperRef = useRef(null);
@@ -44,15 +46,15 @@ const ProfileDropdown: FC<Props> = ({ avatarUrl }) => {
           ref={wrapperRef}
         >
           <div role="none">
-            {/* <a
-              href="#"
+            <Link
+              href={`/app/profile/${userId}`}
               className="text-gray-700 block px-4 py-2 text-sm hover:bg-blue-50"
               role="menuitem"
               id="menu-item-0"
             >
-              Account
-            </a>
-            <a
+              Profile
+            </Link>
+            {/* <a
               href="#"
               className="text-gray-700 block px-4 py-2 text-sm hover:bg-blue-50"
               role="menuitem"
