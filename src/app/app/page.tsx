@@ -14,7 +14,7 @@ const AuthHome = async () => {
 
   const { data: profile } = await supabase
     .from("profiles")
-    .select("full_name, contributions, points, streak")
+    .select("full_name, contributions, points, streak, submissions, ratings")
     .eq("id", user!.id);
 
   // const { data: badges } = await supabase
