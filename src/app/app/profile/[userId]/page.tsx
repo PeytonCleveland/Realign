@@ -27,7 +27,7 @@ const Profile = async ({ params }: { params: { userId: string } }) => {
             ]}
             className="mb-12"
           />
-          <div className="flex gap-3 items-center w-full">
+          <div className="flex items-center w-full">
             <Avatar imageUrl={profiles[0].avatar_url} />
             <h1 className="text-2xl font-bold text-gray-900 sm:text-3xl">
               {profiles[0].full_name}
