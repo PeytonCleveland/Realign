@@ -7,11 +7,16 @@ const Profile = async ({ params }: { params: { userId: string } }) => {
     cookies,
   });
 
+  console.log("params: ", params);
+
   const { userId } = params;
+  console.log("userId: ", userId);
   const { data: profiles } = await supabase
     .from("profiles")
     .select()
     .eq("id", userId);
+
+  console.log("profiles: ", profiles);
 
   if (!profiles || !profiles[0]) return null;
 
