@@ -86,7 +86,27 @@ const ProfileInfo: FC<Props> = ({ avatarUrl, canEdit = false, userId }) => {
             className="flex flex-col p-6 rounded-md shadow-sm gap-4 bg-white"
             onClick={(e) => e.stopPropagation()}
           >
-            <h4 className="text-xl font-semibold text-gray-900">Edit Avatar</h4>
+            <div className="flex items-center justify-between">
+              <h4 className="text-xl font-semibold text-gray-900">
+                Edit Avatar
+              </h4>
+              <button onClick={() => setIsOpen(false)}>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-6 h-6 text-gray-900"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+            </div>
             <label htmlFor="avatar" className="block font-medium text-gray-700">
               Avatar Image
             </label>
