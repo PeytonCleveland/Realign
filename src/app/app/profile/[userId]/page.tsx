@@ -34,7 +34,7 @@ const Profile = async ({ params }: { params: { userId: string } }) => {
           />
           <div className="flex items-center w-full">
             <div className="relative">
-              <Avatar imageUrl={profiles[0].avatar_url} />
+              <Avatar imageUrl={profiles[0].avatar_url} size="lg" />
               {user?.id == userId ? (
                 <div className="absolute left-10 bg-blue-600 rounded-md shadow-sm p-1 bottom-0">
                   <svg
