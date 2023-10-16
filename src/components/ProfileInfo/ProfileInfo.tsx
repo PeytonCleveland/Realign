@@ -126,6 +126,7 @@ const ProfileInfo: FC<Props> = ({ avatarUrl, canEdit = false, userId }) => {
             <button
               className="bg-blue-600 self-end text-white py-2 px-4 font-medium shadow-sm rounded-md w-fit flex justify-center items-center gap-2 hover:bg-blue-500 focus:bg-blue-600 focus:ring-1 ring-blue-500 ring-offset-2 disabled:cursor-not-allowed disabled:bg-blue-300"
               onClick={handleUpdateProfile}
+              disabled={avatarPath === null}
             >
               Update Avatar
             </button>
