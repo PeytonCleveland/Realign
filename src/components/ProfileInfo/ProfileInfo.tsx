@@ -34,9 +34,13 @@ const ProfileInfo: FC<Props> = ({ avatarUrl, canEdit = false, userId }) => {
       </div>
       {isOpen ? (
         <div
-          className="fixed top-0 left-0 w-screen h-screen bg-gray-900 bg-opacity-60 z-[100]"
+          className="fixed top-0 left-0 w-screen h-screen bg-gray-900 bg-opacity-60 z-[100] flex justify-center items-center"
           onClick={() => setIsOpen(false)}
-        ></div>
+        >
+          <div className="flex flex-col p-8 rounded-md shadow-sm gap-4 bg-white">
+            <h4>Edit Avatar</h4>
+          </div>
+        </div>
       ) : null}
     </>
   );
