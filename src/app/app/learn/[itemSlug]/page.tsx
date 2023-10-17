@@ -31,7 +31,7 @@ const TrainingItem = async ({ params }: { params: { itemSlug: string } }) => {
                 active: true,
               },
             ]}
-            className="mb-12"
+            className="mb-16"
           />
 
           <h1 className="text-2xl font-bold text-gray-900 sm:text-3xl">
@@ -44,7 +44,7 @@ const TrainingItem = async ({ params }: { params: { itemSlug: string } }) => {
         </div>
       </div>
       <div className="flex flex-col w-full gap-4 mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8 justify-between">
-        <div className="w-2/5 h-[250px] rounded-md shadow-sm overflow-hidden object-cover relative self-end -mt-[200px]">
+        <div className="w-2/5 h-[250px] rounded-md shadow-sm overflow-hidden object-cover relative self-end -mt-[250px]">
           <Image src={item.content.hero} alt={item.content.name} fill />
         </div>
         {item.content.sections.map((section: any, index: number) => {
