@@ -51,7 +51,7 @@ const TrainingItem = async ({ params }: { params: { itemSlug: string } }) => {
           return (
             <div className="flex flex-col gap-2" key={index}>
               {section.image ? (
-                <div className="relative w-4/5 h-[375px] self-center">
+                <div className="relative w-4/5 h-[375px] self-center object-cover">
                   <Image src={section.image} alt={section.heading} fill />
                 </div>
               ) : null}
