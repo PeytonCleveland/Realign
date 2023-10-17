@@ -99,7 +99,9 @@ const Learn = async () => {
           })}
         </div>
 
-        <p className="font-bold text-gray-900 sm:text-xl">LLM Essentials</p>
+        <p className="font-bold text-gray-900 sm:text-xl mt-4">
+          LLM Essentials
+        </p>
         <div className="flex w-full gap-8">
           {essentials?.map((item) => {
             return (
