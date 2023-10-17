@@ -50,6 +50,11 @@ const TrainingItem = async ({ params }: { params: { itemSlug: string } }) => {
         {item.content.sections.map((section: any, index: number) => {
           return (
             <div className="flex flex-col gap-2" key={index}>
+              {section.image ? (
+                <div className="relative w-full h-[350px] rounded-md shadow-sm overflow-hidden">
+                  <Image src={section.image} alt={section.heading} fill />
+                </div>
+              ) : null}
               <h4 className="text-gray-900 text-lg font-semibold">
                 {section.heading}
               </h4>
