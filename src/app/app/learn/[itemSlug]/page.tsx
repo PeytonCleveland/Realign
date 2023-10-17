@@ -1,5 +1,6 @@
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
+import Image from "next/image";
 import { Breadcrumbs, Page } from "@/components";
 
 const TrainingItem = async ({ params }: { params: { itemSlug: string } }) => {
@@ -43,6 +44,9 @@ const TrainingItem = async ({ params }: { params: { itemSlug: string } }) => {
         </div>
       </div>
       <div className="flex flex-col w-full gap-4 mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8 justify-between">
+        <div className="w-3/5 h-[350px] rounded-md shadow-sm overflow-hidden object-cover relative">
+          <Image src={item.content.hero} alt={item.content.name} fill />
+        </div>
         {item.content.sections.map((section: any, index: number) => {
           return (
             <div className="flex flex-col gap-2" key={index}>
