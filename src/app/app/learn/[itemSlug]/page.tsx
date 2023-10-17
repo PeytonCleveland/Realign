@@ -37,7 +37,9 @@ const TrainingItem = async ({ params }: { params: { itemSlug: string } }) => {
             {item.name}
           </h1>
 
-          <p className="mt-1.5 text-sm text-gray-500">{item.description}</p>
+          <p className="mt-1.5 text-sm text-gray-500 max-w-[500px]">
+            {item.description}
+          </p>
         </div>
       </div>
     </Page>
