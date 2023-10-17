@@ -24,7 +24,11 @@ const TrainingItem = async ({ params }: { params: { itemSlug: string } }) => {
             items={[
               { text: "Home", href: "/app" },
               { text: "Learn", href: "/app/learn" },
-              { text: "Learn", href: "/app/learn/", active: true },
+              {
+                text: item.name,
+                href: `/app/learn/${item.slug}`,
+                active: true,
+              },
             ]}
             className="mb-12"
           />
