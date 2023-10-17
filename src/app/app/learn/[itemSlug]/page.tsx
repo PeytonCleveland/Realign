@@ -43,7 +43,7 @@ const TrainingItem = async ({ params }: { params: { itemSlug: string } }) => {
           </p>
         </div>
       </div>
-      <div className="flex flex-col w-full gap-4 mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8 justify-between">
+      <div className="flex flex-col w-full gap-6 mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8 justify-between">
         <div className="w-2/5 h-[250px] rounded-md shadow-sm overflow-hidden object-cover relative self-end -mt-[250px] hidden md:block">
           <Image src={item.content.hero} alt={item.content.name} fill />
         </div>
