@@ -50,7 +50,7 @@ const AuthHome = async () => {
               <Link
                 href="/flagged-submissions.csv"
                 download
-                className="text-sm font-light text-blue-600 flex items-center gap-1"
+                className="text-sm font-light text-blue-600 flex items-center gap-1 hover:underline underline-offset-4"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
