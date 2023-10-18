@@ -431,9 +431,10 @@ const NewSubmission = () => {
             <h6 className="text-gray-900 font-semibold">
               This Submission Earns:
             </h6>
-            <p className="text-blue-600 font-semibold">
+            <p className="text-blue-600 font-semibold">1 Point</p>
+            {/* <p className="text-blue-600 font-semibold">
               {points} Point{points > 1 ? "s" : ""}
-            </p>
+            </p> */}
           </div>
         ) : null}
         <div className="flex flex-row-reverse justify-start items-center gap-6">
