@@ -223,17 +223,16 @@ const NewSubmission = () => {
 
   const handleGeneratePoints = async (e: any) => {
     const length = e.target.value.length;
-    console.log(length);
 
     if (!length || length === 0) return;
 
     let points = 1 + length / 150;
-    console.log("points: ", points);
+
     const multiplier = await handleGenerateResponsePoints();
-    console.log(multiplier);
+
     points = points > 5 ? 5 : Math.round(points);
-    console.log("total: ", points * multiplier);
-    setPoints(points * multiplier);
+
+    setPoints(Math.round(points * multiplier));
   };
 
   const handleSubmit = async () => {
@@ -247,6 +246,15 @@ const NewSubmission = () => {
     });
 
     if (error) console.log(error);
+
+    if (!error) {
+      const { error: pointsError } = await supabase
+        .from("profiles")
+        .update({ points: user.points + points })
+        .eq("id", user.id);
+
+      if (pointsError) console.log(pointsError);
+    }
 
     setIsSubmissionLoading(false);
     notify();
@@ -266,7 +274,14 @@ const NewSubmission = () => {
       const {
         data: { user },
       } = await supabase.auth.getUser();
-      setUser(user);
+      const { data: profiles } = await supabase
+        .from("profiles")
+        .select()
+        .eq("id", user?.id);
+
+      if (profiles) {
+        setUser(profiles[0]);
+      }
     };
 
     fetchUser();
@@ -431,10 +446,9 @@ const NewSubmission = () => {
             <h6 className="text-gray-900 font-semibold">
               This Submission Earns:
             </h6>
-            <p className="text-blue-600 font-semibold">1 Point</p>
-            {/* <p className="text-blue-600 font-semibold">
+            <p className="text-blue-600 font-semibold">
               {points} Point{points > 1 ? "s" : ""}
-            </p> */}
+            </p>
           </div>
         ) : null}
         <div className="flex flex-row-reverse justify-start items-center gap-6">
