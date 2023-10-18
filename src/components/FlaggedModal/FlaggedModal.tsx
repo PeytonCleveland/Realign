@@ -7,7 +7,6 @@ import { useRouter } from "next/navigation";
 
 interface Props {
   userId: string;
-  onClear: any;
 }
 
 const FlaggedModal: FC<Props> = ({ userId }) => {
