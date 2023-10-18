@@ -14,7 +14,9 @@ const AuthHome = async () => {
 
   const { data: profile } = await supabase
     .from("profiles")
-    .select("full_name, contributions, points, streak, submissions, ratings")
+    .select(
+      "full_name, contributions, points, streak, submissions, ratings, flagged"
+    )
     .eq("id", user!.id);
 
   // const { data: badges } = await supabase
@@ -31,6 +33,24 @@ const AuthHome = async () => {
       {/* {badgeNotifications ? (
         <BadgeModal badgeId={badgeNotifications[0]["badge_id"]} />
       ) : null} */}
+
+      {profile?.[0].flagged ? (
+        <div className="fixed top-0 left-0 w-screen h-screen bg-gray-900 bg-opacity-60 flex justify-center items-center">
+          <div className="flex flex-col rounded-md shadow-sm bg-white p-6 gap-6">
+            <h3 className="text-lg font-semibold text-gray-900">
+              Account Flagged
+            </h3>
+            <p>
+              Your account has been flagged for bot/spam activity based on the
+              content and timestamps of the following submissions. These
+              submissions and points awarded for them have been removed.
+            </p>
+            <button className="bg-blue-600 text-white disabled:bg-blue-300 px-5 py-2 font-medium rounded-md flex items-center gap-2 hover:bg-blue-500 focus:bg-blue-600 focus:ring-1 ring-blue-500 ring-offset-2 self-end">
+              Continue
+            </button>
+          </div>
+        </div>
+      ) : null}
 
       <div className="w-full bg-gray-50">
         <div className="mb-6 mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8 w-full">
