@@ -24,7 +24,7 @@ export async function POST(req: Request) {
         { role: "system", content: BASE_PROMPT },
         {
           role: "user",
-          content: `Score this prompt 1-5, just return the number: ${json.prompt}`,
+          content: `Score this prompt 1-5 based on uniqueness, complexity, coherence, and depth, just return the number: ${json.prompt}`,
         },
       ],
     });
