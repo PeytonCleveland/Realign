@@ -32,7 +32,7 @@ const FlaggedModal: FC<Props> = ({ userId }) => {
           <p className="text-sm font-light text-gray-600">
             Your account has been flagged for bot/spam activity based on the
             content and timestamps of the following{" "}
-            <strong className="text-gray-900 font-semibold">262</strong>{" "}
+            <strong className="text-gray-900 font-semibold">260</strong>{" "}
             submissions. These submissions and the points awarded for them have
             been removed.
           </p>
