@@ -40,7 +40,7 @@ const AuthHome = async () => {
         <BadgeModal badgeId={badgeNotifications[0]["badge_id"]} />
       ) : null} */}
 
-      {profile?.[0].flagged ? <FlaggedModal /> : null}
+      {profile?.[0].flagged ? <FlaggedModal userId={user!.id} /> : null}
 
       <div className="w-full bg-gray-50">
         <div className="mb-6 mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8 w-full">

@@ -1,8 +1,30 @@
 "use client";
 
+import { FC } from "react";
 import Link from "next/link";
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import { useRouter } from "next/navigation";
 
-const FlaggedModal = () => {
+interface Props {
+  userId: string;
+  onClear: any;
+}
+
+const FlaggedModal: FC<Props> = ({ userId }) => {
+  const supabase = createClientComponentClient();
+  const router = useRouter();
+
+  const handleClearModal = async () => {
+    const { error } = await supabase
+      .from("profiles")
+      .update({ flagged: false })
+      .eq("id", userId);
+
+    if (error) console.log(error);
+
+    router.refresh();
+  };
+
   return (
     <div className="fixed top-0 left-0 w-screen h-screen bg-gray-900 bg-opacity-60 flex justify-center items-center z-[100]">
       <div className="flex flex-col rounded-md shadow-sm bg-white p-6 gap-6 w-[500px]">
@@ -32,7 +54,10 @@ const FlaggedModal = () => {
             </svg>
           </Link>
         </div>
-        <button className="bg-blue-600 text-white disabled:bg-blue-300 px-5 py-2 font-medium rounded-md flex items-center gap-2 hover:bg-blue-500 focus:bg-blue-600 focus:ring-1 ring-blue-500 ring-offset-2 self-end">
+        <button
+          onClick={handleClearModal}
+          className="bg-blue-600 text-white disabled:bg-blue-300 px-5 py-2 font-medium rounded-md flex items-center gap-2 hover:bg-blue-500 focus:bg-blue-600 focus:ring-1 ring-blue-500 ring-offset-2 self-end"
+        >
           Continue
         </button>
       </div>
