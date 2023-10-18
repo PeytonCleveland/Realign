@@ -226,7 +226,7 @@ const NewSubmission = () => {
 
     if (!length || length === 0) return;
 
-    let points = 1 + length / 150;
+    let points = 1 + length / 175;
 
     const multiplier = await handleGenerateResponsePoints();
 
