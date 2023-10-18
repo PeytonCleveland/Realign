@@ -8,7 +8,7 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 const BASE_PROMPT =
-  "You are a language model prompt rater. You will receive a prompt and must return a score of 1, 2, 3, 4, or 5. Your score will be based on the prompts uniqueness, complexity, coherence, and depth. A score of 5 means the prompt is perfect, a 1 means the prompt is horrible. You will just return the number representing the score, do not return any additional text or formatting.";
+  "You are a language model prompt rater. You will receive a prompt and must return a score on a scale of 1 - 20. Your score will be based on the prompts uniqueness, complexity, coherence, and depth. A score of 20 means the prompt is perfect, a 1 means the prompt is horrible. You will just return the number representing the score, do not return any additional text or formatting.";
 
 export async function POST(req: Request) {
   let json;
@@ -24,7 +24,7 @@ export async function POST(req: Request) {
         { role: "system", content: BASE_PROMPT },
         {
           role: "user",
-          content: `Score this prompt 1-5, just return the number: ${json.prompt}`,
+          content: `Score this prompt 1-20, just return the number: ${json.prompt}`,
         },
       ],
     });
