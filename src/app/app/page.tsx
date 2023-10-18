@@ -44,8 +44,9 @@ const AuthHome = async () => {
             <div className="flex flex-col gap-3 w-full">
               <p className="text-sm font-light text-gray-600">
                 Your account has been flagged for bot/spam activity based on the
-                content and timestamps of the following submissions. These
-                submissions and the points awarded for them have been removed.
+                content and timestamps of the following <strong>262</strong>{" "}
+                submissions. These submissions and the points awarded for them
+                have been removed.
               </p>
               <Link
                 href="/flagged-submissions.csv"
