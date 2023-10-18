@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Achievements, BadgeModal, Card, Page } from "@/components";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
+import Link from "next/link";
 
 const AuthHome = async () => {
   const supabase = createServerComponentClient({
@@ -40,11 +41,20 @@ const AuthHome = async () => {
             <h3 className="text-lg font-semibold text-gray-900">
               Account Flagged
             </h3>
-            <p className="text-sm font-light text-gray-600">
-              Your account has been flagged for bot/spam activity based on the
-              content and timestamps of the following submissions. These
-              submissions and points awarded for them have been removed.
-            </p>
+            <div className="flex flex-col gap-3 w-full">
+              <p className="text-sm font-light text-gray-600">
+                Your account has been flagged for bot/spam activity based on the
+                content and timestamps of the following submissions. These
+                submissions and the points awarded for them have been removed.
+              </p>
+              <Link
+                href="/flagged-submissions.csv"
+                download
+                className="text-sm font-light text-blue-600"
+              >
+                Flagged submissions
+              </Link>
+            </div>
             <button className="bg-blue-600 text-white disabled:bg-blue-300 px-5 py-2 font-medium rounded-md flex items-center gap-2 hover:bg-blue-500 focus:bg-blue-600 focus:ring-1 ring-blue-500 ring-offset-2 self-end">
               Continue
             </button>
