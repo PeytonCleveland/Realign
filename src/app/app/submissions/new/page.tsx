@@ -227,10 +227,12 @@ const NewSubmission = () => {
 
   const handleGeneratePoints = (e: any) => {
     const length = e.target.value.length;
+    console.log(length);
 
-    if (!length || length === 0) return 0;
+    if (!length || length === 0) return;
 
     let points = 1 + length / 25;
+    console.log("points: ", points);
     setPoints(points > 6 ? 6 : Math.round(points));
   };
 
