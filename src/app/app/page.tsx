@@ -35,12 +35,12 @@ const AuthHome = async () => {
       ) : null} */}
 
       {profile?.[0].flagged ? (
-        <div className="fixed top-0 left-0 w-screen h-screen bg-gray-900 bg-opacity-60 flex justify-center items-center">
-          <div className="flex flex-col rounded-md shadow-sm bg-white p-6 gap-6">
+        <div className="fixed top-0 left-0 w-screen h-screen bg-gray-900 bg-opacity-60 flex justify-center items-center z-[100]">
+          <div className="flex flex-col rounded-md shadow-sm bg-white p-6 gap-6 w-[350px]">
             <h3 className="text-lg font-semibold text-gray-900">
               Account Flagged
             </h3>
-            <p>
+            <p className="text-sm font-light text-gray-600">
               Your account has been flagged for bot/spam activity based on the
               content and timestamps of the following submissions. These
               submissions and points awarded for them have been removed.
