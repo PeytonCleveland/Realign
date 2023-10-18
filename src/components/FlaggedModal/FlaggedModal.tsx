@@ -39,7 +39,7 @@ const FlaggedModal: FC<Props> = ({ userId }) => {
           <Link
             href="/flagged-submissions.csv"
             download
-            className="text-sm font-light text-blue-600 flex items-center gap-1.5 hover:underline underline-offset-4 decoration-blue-600"
+            className="text-sm font-light text-blue-600 flex items-center gap-1.5 hover:underline underline-offset-4 decoration-blue-600 w-fit"
           >
             Flagged submissions
             <svg
