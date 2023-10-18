@@ -231,7 +231,7 @@ const NewSubmission = () => {
 
     if (!length || length === 0) return;
 
-    let points = 1 + length / 50;
+    let points = 1 + length / 75;
     console.log("points: ", points);
     setPoints(points > 5 ? 5 : Math.round(points));
   };
