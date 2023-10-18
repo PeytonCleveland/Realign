@@ -227,11 +227,13 @@ const NewSubmission = () => {
 
     if (!length || length === 0) return;
 
-    let points = 1 + length / 125;
+    let points = 1 + length / 150;
     console.log("points: ", points);
     const multiplier = await handleGenerateResponsePoints();
     console.log(multiplier);
-    setPoints(points > 5 ? 5 : Math.round(points));
+    points = points > 5 ? 5 : Math.round(points);
+    console.log("total: ", points * multiplier);
+    setPoints(points * multiplier);
   };
 
   const handleSubmit = async () => {
