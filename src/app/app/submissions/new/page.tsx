@@ -166,7 +166,6 @@ const NewSubmission = () => {
   const [prompt, setPrompt] = useState("");
   const [selectedTags, setSelectedTags] = useState("");
   const [isSubmissionLoading, setIsSubmissionLoading] = useState(false);
-  const [isPromptLoading, setIsPromptLoading] = useState(false);
   const [isResponseLoading, setIsResponseLoading] = useState(false);
   const [points, setPoints] = useState<number>(1);
   const [response, setResponse] = useState("");
@@ -176,20 +175,17 @@ const NewSubmission = () => {
 
   const notify = () => toast.success("Data sumbitted succesfully");
 
-  const handleGeneratePrompt = async () => {
-    setPrompt("");
-    setIsPromptLoading(true);
-    const response = await fetch("/api/openai/prompt", {
+  const handleGenerateResponsePoints = async () => {
+    const response = await fetch("/api/openai/prompt-points", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ prompt: selectedTags }),
+      body: JSON.stringify({ prompt: prompt }),
     });
 
     const data = await response.json();
-    setIsPromptLoading(false);
-    setPrompt(data.text);
+    return data.points;
   };
 
   const handleGenerateResponse = async () => {
@@ -225,7 +221,7 @@ const NewSubmission = () => {
     setResponse(e.target.value);
   };
 
-  const handleGeneratePoints = (e: any) => {
+  const handleGeneratePoints = async (e: any) => {
     const length = e.target.value.length;
     console.log(length);
 
@@ -233,6 +229,8 @@ const NewSubmission = () => {
 
     let points = 1 + length / 125;
     console.log("points: ", points);
+    const multiplier = await handleGenerateResponsePoints();
+    console.log(multiplier);
     setPoints(points > 5 ? 5 : Math.round(points));
   };
 
