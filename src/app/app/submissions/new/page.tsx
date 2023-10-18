@@ -168,6 +168,7 @@ const NewSubmission = () => {
   const [isSubmissionLoading, setIsSubmissionLoading] = useState(false);
   const [isPromptLoading, setIsPromptLoading] = useState(false);
   const [isResponseLoading, setIsResponseLoading] = useState(false);
+  const [points, setPoints] = useState<number>(1);
   const [response, setResponse] = useState("");
   const [user, setUser] = useState<any>(null);
 
@@ -222,6 +223,15 @@ const NewSubmission = () => {
 
   const handleResponseChange = (e: any) => {
     setResponse(e.target.value);
+  };
+
+  const handleGeneratePoints = (e: any) => {
+    const length = e.target.value.length;
+
+    if (!length || length === 0) return 0;
+
+    let points = 1 + length / 25;
+    setPoints(points > 6 ? 6 : Math.round(points));
   };
 
   const handleSubmit = async () => {
@@ -408,6 +418,7 @@ const NewSubmission = () => {
             className="w-full rounded-md border border-gray-300 shadow-sm sm:text-sm p-3"
             value={response}
             onChange={(e) => handleResponseChange(e)}
+            onBlur={(e) => handleGeneratePoints(e)}
           />
         </div>
         {prompt !== "" && response !== "" ? (
@@ -415,7 +426,9 @@ const NewSubmission = () => {
             <h6 className="text-gray-900 font-semibold">
               This Submission Earns:
             </h6>
-            <p className="text-blue-600 font-semibold">1 Point</p>
+            <p className="text-blue-600 font-semibold">
+              {points} Point{points > 1 ? "s" : ""}
+            </p>
           </div>
         ) : null}
         <div className="flex flex-row-reverse justify-start items-center gap-6">
