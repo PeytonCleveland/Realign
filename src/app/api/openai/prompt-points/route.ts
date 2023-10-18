@@ -31,7 +31,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json(
       {
-        text: `${completion.data.choices[0].message?.content?.replace(
+        score: `${completion.data.choices[0].message?.content?.replace(
           /^"(.+(?="$))"$/,
           "$1"
         )}`,
