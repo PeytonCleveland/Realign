@@ -410,12 +410,14 @@ const NewSubmission = () => {
             onChange={(e) => handleResponseChange(e)}
           />
         </div>
-        <div className="flex justify-end items-center gap-2">
-          <h6 className="text-gray-900 font-semibold">
-            This Submission Earns:
-          </h6>
-          <p className="text-blue-600 font-semibold">1 Point</p>
-        </div>
+        {prompt !== "" && response !== "" ? (
+          <div className="flex justify-end items-center gap-2">
+            <h6 className="text-gray-900 font-semibold">
+              This Submission Earns:
+            </h6>
+            <p className="text-blue-600 font-semibold">1 Point</p>
+          </div>
+        ) : null}
         <div className="flex flex-row-reverse justify-start items-center gap-6">
           <button
             onClick={handleSubmit}
