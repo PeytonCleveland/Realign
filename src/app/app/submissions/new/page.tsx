@@ -233,7 +233,7 @@ const NewSubmission = () => {
 
     let points = 1 + length / 25;
     console.log("points: ", points);
-    setPoints(points > 6 ? 6 : Math.round(points));
+    setPoints(points > 5 ? 5 : Math.round(points));
   };
 
   const handleSubmit = async () => {
