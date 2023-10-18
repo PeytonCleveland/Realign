@@ -388,12 +388,16 @@ const NewSubmission = () => {
             className="w-full rounded-md border border-gray-300 shadow-sm sm:text-sm p-3"
             value={prompt}
             onChange={(e) => handlePromptChange(e)}
+            onBlur={(e) => handleGeneratePoints(e)}
           />
         </div>
 
         <div className="w-full flex flex-col gap-3">
           <div className="flex justify-between items-center">
-            <label htmlFor="prompt" className="block font-medium text-gray-700">
+            <label
+              htmlFor="response"
+              className="block font-medium text-gray-700"
+            >
               Response
             </label>
             <button
@@ -414,13 +418,12 @@ const NewSubmission = () => {
           </div>
 
           <textarea
-            id="prompt"
+            id="response"
             placeholder="The meaning of life is a deeply philosophical and existential question that has been discussed and debated among humans for centuries. It's a complex question and different people, cultures, and religions have different beliefs about what gives life its meaning."
             rows={response ? response.split("\n").length + 2 : 5}
             className="w-full rounded-md border border-gray-300 shadow-sm sm:text-sm p-3"
             value={response}
             onChange={(e) => handleResponseChange(e)}
-            onBlur={(e) => handleGeneratePoints(e)}
           />
         </div>
         {prompt !== "" && response !== "" ? (
