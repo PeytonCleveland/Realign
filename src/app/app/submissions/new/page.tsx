@@ -185,7 +185,7 @@ const NewSubmission = () => {
     });
 
     const data = await response.json();
-    return data.score;
+    return parseInt(data.score);
   };
 
   const handleGenerateResponse = async () => {
