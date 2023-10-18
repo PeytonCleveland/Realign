@@ -36,7 +36,7 @@ const AuthHome = async () => {
 
       {profile?.[0].flagged ? (
         <div className="fixed top-0 left-0 w-screen h-screen bg-gray-900 bg-opacity-60 flex justify-center items-center z-[100]">
-          <div className="flex flex-col rounded-md shadow-sm bg-white p-6 gap-6 w-[350px]">
+          <div className="flex flex-col rounded-md shadow-sm bg-white p-6 gap-6 w-[400px]">
             <h3 className="text-lg font-semibold text-gray-900">
               Account Flagged
             </h3>
