@@ -60,7 +60,7 @@ const ProfileInfo: FC<Props> = ({ avatarUrl, canEdit = false, userId }) => {
   return (
     <>
       <div className="relative">
-        <Avatar imageUrl={avatarUrl} size="lg" />
+        <Avatar imageUrl={avatarUrl ?? "/default.png"} size="lg" />
         {canEdit ? (
           <button
             className="absolute left-12 bg-blue-600 rounded-md shadow-sm p-1.5 -bottom-1 hover:bg-blue-500"
